@@ -1,2 +1,5 @@
 /build
 Makefile
+stuff.txt
+headers/closed_hash.h
+src/closed_hash.cpp
