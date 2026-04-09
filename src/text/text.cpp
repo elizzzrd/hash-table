@@ -181,7 +181,7 @@ bool collect_words(const char * filename, StringArray_t * arr)
         }
         else
         {
-            if (word_len > 4)
+            if (word_len > 4 && arr->size < MAX_WORDS)
             {
                 word[word_len] = '\0';
                 if (!string_array_push(arr, word))

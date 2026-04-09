@@ -54,9 +54,9 @@ st_size:   3913134 bytes (3821.42 KB, 3.73 MB)
 st_dev:     2096 (device ID)
 st_ino:     80711 (inode number)
 
-Collected words: 645473
+Collected words: 40000
 
- STRING_ARRAY (first 20):
+STRING_ARRAY (first 20):
 [1] feynman
 [2] lectures
 [3] physics
