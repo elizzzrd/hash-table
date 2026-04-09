@@ -1,0 +1,79 @@
+
+=== struct dirent ===
+d_ini:      80724 (inode number)
+d_off:      2399008304348365410 (offset to next dirent)
+d_reclen:   40 (length of this record)
+d_type:     8 (file type) -> regular file
+d_name:    "feynman-lectures.txt" (file name)
+
+
+=== struct stat "feynman-lectures.txt"===
+st_size:   2060445 bytes (2012.15 KB, 1.96 MB)
+st_dev:     2096 (device ID)
+st_ino:     80724 (inode number)
+
+
+=== struct dirent ===
+d_ini:      80786 (inode number)
+d_off:      3914247707034061076 (offset to next dirent)
+d_reclen:   48 (length of this record)
+d_type:     8 (file type) -> regular file
+d_name:    "gone-with-the-wind.txt" (file name)
+
+
+=== struct stat "gone-with-the-wind.txt"===
+st_size:   2335280 bytes (2280.55 KB, 2.23 MB)
+st_dev:     2096 (device ID)
+st_ino:     80786 (inode number)
+
+
+=== struct dirent ===
+d_ini:      69877 (inode number)
+d_off:      6307374087809080274 (offset to next dirent)
+d_reclen:   40 (length of this record)
+d_type:     8 (file type) -> regular file
+d_name:    "war-and-peace.txt" (file name)
+
+
+=== struct stat "war-and-peace.txt"===
+st_size:   3202320 bytes (3127.27 KB, 3.05 MB)
+st_dev:     2096 (device ID)
+st_ino:     69877 (inode number)
+
+
+=== struct dirent ===
+d_ini:      80711 (inode number)
+d_off:      9223372036854775807 (offset to next dirent)
+d_reclen:   40 (length of this record)
+d_type:     8 (file type) -> regular file
+d_name:    "Computer-systems.txt" (file name)
+
+
+=== struct stat "Computer-systems.txt"===
+st_size:   3913134 bytes (3821.42 KB, 3.73 MB)
+st_dev:     2096 (device ID)
+st_ino:     80711 (inode number)
+
+Collected words: 645473
+
+ STRING_ARRAY (first 20):
+[1] feynman
+[2] lectures
+[3] physics
+[4] millennium
+[5] edition
+[6] feynman
+[7] leighton
+[8] sands
+[9] volume
+[10] copyright
+[11] california
+[12] institute
+[13] technology
+[14] michael
+[15] gottlieb
+[16] rudolf
+[17] pfeiffer
+[18] published
+[19] basic
+[20] books
