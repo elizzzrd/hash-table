@@ -18,13 +18,14 @@ INCLUDES = -I headers
 
 SRC_DIR := src
 
+
 BUILD_DIR := build
 BIN_DIR := $(BUILD_DIR)/bin
 OBJ_DIR := $(BUILD_DIR)/obj
 
-SOURCES := 
-          
+SOURCES := 	$(wildcard $(SRC_DIR)/*.cpp) \
 
+          
 OBJECTS := $(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
 TARGET := $(BIN_DIR)/main
 
@@ -40,15 +41,23 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 $(BIN_DIR) $(OBJ_DIR):
 	@mkdir -p $@
 
-clean:
-	rm -rf $(BUILD_DIR)
+logger-clean:
+	@rm -rf logger/
+	@mkdir -p logger/ 
+	@rm -rf data_csv/
+	@mkdir -p data_csv/ 
 
+clean: logger-clean
+	@rm -rf $(BUILD_DIR)
 
 rebuild: clean all
 
 check: 
-	cd build/bin
-	./$(TARGET)
+	@cd build/bin
+	@./$(TARGET)
 
 
 .PHONY: all clean rebuild start
+
+
+rebuild: clean all

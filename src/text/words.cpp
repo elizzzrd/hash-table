@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <dirent.h>
 
-#include "text.h"
+#include "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/headers/text.h"
 
 
 void print_dirent(const struct dirent * entry, FILE * log_fp);
@@ -14,7 +14,7 @@ void print_stat(const struct stat * st, const char * filename, FILE * log_fp);
 
 int main() 
 {        
-    FILE * log_fp = fopen("log_words.txt", "w+");
+    FILE * log_fp = fopen("log_words.log", "w+");
     if (log_fp == NULL)
     {
         fprintf(stderr, "Opening log file error\n");
@@ -68,6 +68,10 @@ int main()
     fprintf(log_fp, "Collected words: %zu\n", arr.size);
     strings_array_peep(&arr, 20, log_fp);
     
+    if (!export_words(&arr, "../data.bin"))
+    {
+        fprintf(stderr, "error during loading data on disk\n");
+    }
     
     string_array_free(&arr);
     closedir(dir);
@@ -114,8 +118,8 @@ void print_stat(const struct stat * st, const char * filename, FILE * log_fp)
     fprintf(log_fp, "=== struct stat \"%s\"===\n", filename);
     fprintf(log_fp, "st_size:   %ld bytes (%.2f KB, %.2f MB)\n", 
                                     (long)st->st_size, 
-                                    st->st_size / 1024.0, 
-                                    st->st_size / (1024.0 * 1024.0));
+                                    (double)st->st_size / 1024.0, 
+                                    (double)st->st_size / (1024.0 * 1024.0));
     fprintf(log_fp, "st_dev:     %lu (device ID)\n", (unsigned long)st->st_dev);
     fprintf(log_fp, "st_ino:     %lu (inode number)\n", (unsigned long)st->st_ino);
     fprintf(log_fp, "\n");

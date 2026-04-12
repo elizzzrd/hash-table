@@ -1,8 +1,3 @@
 /build
 stuff.txt
-/headers/errors_ht.h
-/headers/errors_lst.h
-/headers/list.h
-/src/errors
-/src/list
-/src/stats
+

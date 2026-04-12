@@ -1,24 +1,87 @@
 #pragma once
 #include <stdio.h>
 #include <stdint.h>
-#include "list.h"
-#include "text/text.h"
+
+#include "text.h"
+
+
+#define LOG_MESSAGE(format, ...) log_message(format, __FILE__, __LINE__, ##__VA_ARGS__)
+
+
+#define HT_CHECK(ht_ptr) \
+    do { \
+        HT_Err err = hashtable_validate(ht_ptr); \
+        if (err != HT_OK) { \
+            ht_dump(ht_ptr, err, __FILE__, __LINE__);  \
+        } \
+        return err; \
+    } while (0)
+    
+
+    
+#define HT_DUMP(tree) do { \
+} while(0)
+
+
+typedef enum errors_ht
+{
+    HT_OK,
+
+    HT_NULL_PTR,
+    HT_MEMORY_ALLOCATION_ERROR,
+    HT_INVALID_INSERT,
+    HT_INVALID_DELETE,
+    HT_OVERFLOW
+} HT_Err;
+
+
+void log_init(void);
+void log_close(void);
+void log_message(const char * file, int line,const char * format, ...);
+
 
 #define HT_MAX_SIZE 40000
+#define LIST_SIZE_MAX 25
+typedef char * Elem_t;
 typedef uint64_t (*hash_func_t)(const Elem_t);
+
+
+typedef struct node
+{
+    Elem_t word;
+    union
+    {
+        int size;               // word occurrence
+        int list_size;          // for list_head
+    };
+    struct node * prev;
+    struct node * next;
+} Node_t;
+
 
 typedef struct 
 {
     Node_t ** buckets;
+    int * bucket_sizes;
+
     size_t size;
     size_t capacity;
     hash_func_t hash;
 } Hashtable_t;
 
 
-bool hashtable_init(Hashtable_t * ht, size_t capacity);
-bool hashtable_insert(Hashtable_t * ht, const Elem_t word, hash_func_t hash);
-void build_hashtable(Hashtable_t * ht, StringArray_t * arr, hash_func_t hash);
-int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word, hash_func_t hash);
-bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word, hash_func_t hash);
+bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash);
+HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word);
+void build_hashtable(Hashtable_t * ht, StringArray_t * arr);
+int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word);
+bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word);
 void hashtable_destroy(Hashtable_t * ht);
+
+
+size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename);
+void export_to_csv(Hashtable_t * ht, const char * filename);
+
+void dump_ht(const Hashtable_t * ht, const char * filename);
+bool hashtable_validate(const Hashtable_t * ht);
+const char * ht_error_string(HT_Err error);
+

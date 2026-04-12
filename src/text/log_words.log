@@ -1,5 +1,19 @@
 
 === struct dirent ===
+d_ini:      81481 (inode number)
+d_off:      841879410628888298 (offset to next dirent)
+d_reclen:   48 (length of this record)
+d_type:     8 (file type) -> regular file
+d_name:    "origin-of-species.txt" (file name)
+
+
+=== struct stat "origin-of-species.txt"===
+st_size:   937408 bytes (915.44 KB, 0.89 MB)
+st_dev:     2096 (device ID)
+st_ino:     81481 (inode number)
+
+
+=== struct dirent ===
 d_ini:      80724 (inode number)
 d_off:      2399008304348365410 (offset to next dirent)
 d_reclen:   40 (length of this record)
@@ -29,7 +43,7 @@ st_ino:     80786 (inode number)
 
 === struct dirent ===
 d_ini:      69877 (inode number)
-d_off:      6307374087809080274 (offset to next dirent)
+d_off:      5053853717449304098 (offset to next dirent)
 d_reclen:   40 (length of this record)
 d_type:     8 (file type) -> regular file
 d_name:    "war-and-peace.txt" (file name)
@@ -43,37 +57,37 @@ st_ino:     69877 (inode number)
 
 === struct dirent ===
 d_ini:      80711 (inode number)
-d_off:      9223372036854775807 (offset to next dirent)
+d_off:      6307374087809080274 (offset to next dirent)
 d_reclen:   40 (length of this record)
 d_type:     8 (file type) -> regular file
-d_name:    "Computer-systems.txt" (file name)
+d_name:    "harry-potter.txt" (file name)
 
 
-=== struct stat "Computer-systems.txt"===
-st_size:   3913134 bytes (3821.42 KB, 3.73 MB)
+=== struct stat "harry-potter.txt"===
+st_size:   1164038 bytes (1136.76 KB, 1.11 MB)
 st_dev:     2096 (device ID)
 st_ino:     80711 (inode number)
 
-Collected words: 40000
+Collected words: 636241
 
 STRING_ARRAY (first 20):
-[1] feynman
-[2] lectures
-[3] physics
-[4] millennium
-[5] edition
-[6] feynman
-[7] leighton
-[8] sands
-[9] volume
-[10] copyright
-[11] california
-[12] institute
-[13] technology
-[14] michael
-[15] gottlieb
-[16] rudolf
-[17] pfeiffer
-[18] published
-[19] basic
-[20] books
+[1] origin
+[2] species
+[3] charles
+[4] darwin
+[5] regard
+[6] material
+[7] world
+[8] least
+[9] perceive
+[10] events
+[11] brought
+[12] about
+[13] insulated
+[14] interpositions
+[15] divine
+[16] power
+[17] exerted
+[18] particular
+[19] establishment
+[20] general

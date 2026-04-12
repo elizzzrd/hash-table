@@ -5,7 +5,45 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/stat.h>
-#include "text.h"
+#include "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/headers/text.h"
+
+//============================================================================
+bool export_words(const StringArray_t * arr, const char * filename)
+{
+    assert(arr && filename);
+    
+    FILE * file = fopen(filename, "wb");  
+    if (!file) 
+    {
+        fprintf(stderr, "Error: Cannot open file '%s' for writing\n", filename);
+        return false;
+    }
+    
+    
+    const size_t BUFFER_SIZE = 1024 * 1024;  
+    char * buffer = (char *)malloc(BUFFER_SIZE);
+    if (buffer) {
+        setvbuf(file, buffer, _IOFBF, BUFFER_SIZE);
+    }
+    
+    size_t written = 0;
+    for (size_t i = 0; i < arr->size; i++) {
+        if (arr->data[i] != NULL) {
+            size_t len = strlen(arr->data[i]);
+            
+            fwrite(&len, sizeof(size_t), 1, file);
+            fwrite(arr->data[i], sizeof(char), len, file);
+            written++;
+        }
+    }
+    
+    fclose(file);
+    if (buffer) free(buffer);
+    
+    printf("Export: %zu words written to '%s'\n", written, filename);
+    return true;
+}
+
 
 //============================================================================
 bool string_array_init(StringArray_t * array, size_t initial_capacity)
@@ -181,7 +219,7 @@ bool collect_words(const char * filename, StringArray_t * arr)
         }
         else
         {
-            if (word_len > 4 && arr->size < MAX_WORDS)
+            if (word_len > 4)
             {
                 word[word_len] = '\0';
                 if (!string_array_push(arr, word))

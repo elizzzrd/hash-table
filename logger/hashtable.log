@@ -1,0 +1,24 @@
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+Build complete: 636241 unique words inserted
+Loaded 636241 words
+
+
+
+----------------------------------------------------------------------------------------------------------------
+| Hash function   | Running time (ms) | Running time (s) | Collisions | Max chain  | Avg chain  | Variance     |
+----------------------------------------------------------------------------------------------------------------
+| const           | 89963             | 89963318         | 28815      | 28816      | 1.00       | 28815.00     |
+| first_char      | 8066              | 8066283          | 28780      | 3409       | 1.00       | 1714.37      |
+| word_len        | 11754             | 11754116         | 28800      | 5126       | 1.00       | 3866.71      |
+| sum             | 418               | 418025           | 27630      | 138        | 1.00       | 61.46        |
+| rotate          | 230               | 230091           | 15743      | 19         | 1.00       | 3.54         |
+| crc32           | 324               | 324002           | 6935       | 12         | 1.00       | 1.01         |

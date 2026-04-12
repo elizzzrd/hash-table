@@ -25,3 +25,5 @@ size_t get_file_size(const char * filename);
 size_t read_text_from_file(const char * filename, size_t size, char * buffer);
 
 bool collect_words(const char * filename, StringArray_t * arr);
+
+bool export_words(const StringArray_t * arr, const char * filename);
