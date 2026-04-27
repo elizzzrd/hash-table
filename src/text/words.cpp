@@ -68,7 +68,7 @@ int main()
     fprintf(log_fp, "Collected words: %zu\n", arr.size);
     strings_array_peep(&arr, 20, log_fp);
     
-    if (!export_words(&arr, "../data.bin"))
+    if (!export_words(&arr, "../test_data.bin"))
     {
         fprintf(stderr, "error during loading data on disk\n");
     }

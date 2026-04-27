@@ -27,7 +27,7 @@ SOURCES := 	$(wildcard $(SRC_DIR)/*.cpp) \
 
           
 OBJECTS := $(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
-TARGET := $(BIN_DIR)/main
+TARGET := $(BIN_DIR)/comparison
 
 all: $(TARGET)
 
@@ -41,16 +41,18 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 $(BIN_DIR) $(OBJ_DIR):
 	@mkdir -p $@
 
+rebuild: all
+
+
 logger-clean:
 	@rm -rf logger/
 	@mkdir -p logger/ 
-	@rm -rf data_csv/
-	@mkdir -p data_csv/ 
+
 
 clean: logger-clean
 	@rm -rf $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)/ 
 
-rebuild: clean all
 
 check: 
 	@cd build/bin

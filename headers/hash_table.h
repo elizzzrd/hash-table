@@ -5,9 +5,6 @@
 #include "text.h"
 
 
-#define LOG_MESSAGE(format, ...) log_message(format, __FILE__, __LINE__, ##__VA_ARGS__)
-
-
 #define HT_CHECK(ht_ptr) \
     do { \
         HT_Err err = hashtable_validate(ht_ptr); \
@@ -17,6 +14,8 @@
         return err; \
     } while (0)
     
+#define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
+
 
     
 #define HT_DUMP(tree) do { \
@@ -85,3 +84,4 @@ void dump_ht(const Hashtable_t * ht, const char * filename);
 bool hashtable_validate(const Hashtable_t * ht);
 const char * ht_error_string(HT_Err error);
 
+void test_hashtable(Hashtable_t * ht, const char * test_data);

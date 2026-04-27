@@ -15,6 +15,8 @@ size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename)
 {
     assert(ht && filename);
     
+    LOG_MESSAGE("start build hashtable from file\n");
+
     FILE * file = fopen(filename, "rb");
     if (!file) {
         fprintf(stderr, "Error: Cannot open file '%s' for reading\n", filename);
@@ -56,15 +58,15 @@ size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename)
         
         word[word_len] = '\0';
         
-        
         HT_Err err = hashtable_insert(ht, word);
         if (err == HT_OK) {
             inserted++;
-        } else if (err == HT_OVERFLOW) {
-            fprintf(stderr, "Error: Hash table overflow at %zu words\n", inserted);
-            free(word);
-            break;
-        } 
+        }
+        //  else if (err == HT_OVERFLOW) {
+        //     fprintf(stderr, "Error: Hash table overflow at %zu words\n", inserted);
+        //     free(word);
+        //     break;
+        // } 
         
         free(word);
     }
@@ -72,13 +74,14 @@ size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename)
     fclose(file);
     if (buffer) free(buffer);
     
-    fprintf(log_fp, "Build complete: %zu unique words inserted\n", inserted);
+    LOG_MESSAGE("Build complete: %zu unique words inserted\n", inserted);
     return inserted;
 }
 
 
 void export_to_csv(Hashtable_t * ht, const char * filename)
 {
+    assert(ht);
     FILE *fp = fopen(filename, "w");
     if (!fp)
     {
@@ -87,10 +90,14 @@ void export_to_csv(Hashtable_t * ht, const char * filename)
     }
 
     fprintf(fp, "bucket,length\n");
+    
 
-    for (size_t i = 0; i < ht->size; i++)
+    for (size_t i = 0; i < ht->capacity; i++)
     {
-        fprintf(fp, "%zu,%d\n", i, ht->bucket_sizes[i]);
+        if (ht->bucket_sizes[i])
+            fprintf(fp, "%zu,%d\n", i, ht->bucket_sizes[i]);
+        else    
+            fprintf(fp, "%zu, 0\n", i);
     }
 
     fclose(fp);

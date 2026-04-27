@@ -16,6 +16,7 @@ const char * log_file = "logger/hashtable.log";
 FILE * log_fp = NULL;
 
 
+
 void log_init(void)
 {
     log_fp = fopen(log_file, "a");

@@ -1,3 +1,5 @@
 /build
-stuff.txt
-
+/data_csv
+/logger
+*.bin
+*.out

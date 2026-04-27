@@ -8,8 +8,6 @@
 #include "hash_table.h"
 
 
-
-
 bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash)
 {
     assert(ht && capacity > 0);
@@ -63,11 +61,11 @@ HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word)
 {
     assert(ht && word);
 
-    if (ht->size >= ht->capacity)
-    {
-        fprintf(stderr, "hashtable is full\n");
-        return HT_OVERFLOW;
-    }    
+    // if (ht->size > ht->capacity)
+    // {
+    //     fprintf(stderr, "hashtable is full\n");
+    //     return HT_OVERFLOW;
+    // }    
 
     size_t index = (ht->hash(word)) % ((uint64_t)(ht->capacity));
     Node_t * current = ht->buckets[index];

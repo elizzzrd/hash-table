@@ -1,49 +1,7 @@
 
 === struct dirent ===
-d_ini:      81481 (inode number)
-d_off:      841879410628888298 (offset to next dirent)
-d_reclen:   48 (length of this record)
-d_type:     8 (file type) -> regular file
-d_name:    "origin-of-species.txt" (file name)
-
-
-=== struct stat "origin-of-species.txt"===
-st_size:   937408 bytes (915.44 KB, 0.89 MB)
-st_dev:     2096 (device ID)
-st_ino:     81481 (inode number)
-
-
-=== struct dirent ===
-d_ini:      80724 (inode number)
-d_off:      2399008304348365410 (offset to next dirent)
-d_reclen:   40 (length of this record)
-d_type:     8 (file type) -> regular file
-d_name:    "feynman-lectures.txt" (file name)
-
-
-=== struct stat "feynman-lectures.txt"===
-st_size:   2060445 bytes (2012.15 KB, 1.96 MB)
-st_dev:     2096 (device ID)
-st_ino:     80724 (inode number)
-
-
-=== struct dirent ===
-d_ini:      80786 (inode number)
-d_off:      3914247707034061076 (offset to next dirent)
-d_reclen:   48 (length of this record)
-d_type:     8 (file type) -> regular file
-d_name:    "gone-with-the-wind.txt" (file name)
-
-
-=== struct stat "gone-with-the-wind.txt"===
-st_size:   2335280 bytes (2280.55 KB, 2.23 MB)
-st_dev:     2096 (device ID)
-st_ino:     80786 (inode number)
-
-
-=== struct dirent ===
 d_ini:      69877 (inode number)
-d_off:      5053853717449304098 (offset to next dirent)
+d_off:      6307374087809080274 (offset to next dirent)
 d_reclen:   40 (length of this record)
 d_type:     8 (file type) -> regular file
 d_name:    "war-and-peace.txt" (file name)
@@ -54,40 +12,26 @@ st_size:   3202320 bytes (3127.27 KB, 3.05 MB)
 st_dev:     2096 (device ID)
 st_ino:     69877 (inode number)
 
-
-=== struct dirent ===
-d_ini:      80711 (inode number)
-d_off:      6307374087809080274 (offset to next dirent)
-d_reclen:   40 (length of this record)
-d_type:     8 (file type) -> regular file
-d_name:    "harry-potter.txt" (file name)
-
-
-=== struct stat "harry-potter.txt"===
-st_size:   1164038 bytes (1136.76 KB, 1.11 MB)
-st_dev:     2096 (device ID)
-st_ino:     80711 (inode number)
-
-Collected words: 636241
+Collected words: 215413
 
 STRING_ARRAY (first 20):
-[1] origin
-[2] species
-[3] charles
-[4] darwin
-[5] regard
-[6] material
-[7] world
-[8] least
-[9] perceive
-[10] events
-[11] brought
-[12] about
-[13] insulated
-[14] interpositions
-[15] divine
-[16] power
-[17] exerted
-[18] particular
-[19] establishment
-[20] general
+[1] chapter
+[2] prince
+[3] genoa
+[4] lucca
+[5] family
+[6] estates
+[7] buonapartes
+[8] means
+[9] still
+[10] defend
+[11] infamies
+[12] horrors
+[13] perpetrated
+[14] antichrist
+[15] really
+[16] believe
+[17] antichrist
+[18] nothing
+[19] longer
+[20] friend

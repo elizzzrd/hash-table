@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 #include "hash_table.h"
-#include "hash_funtions.h"
+#include "hash_functions.h"
 
 #define MAX_WORD_LEN 256
 
