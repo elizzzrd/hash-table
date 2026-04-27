@@ -27,7 +27,7 @@ SOURCES := 	$(wildcard $(SRC_DIR)/*.cpp) \
 
           
 OBJECTS := $(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
-TARGET := $(BIN_DIR)/comparison
+TARGET := $(BIN_DIR)/main
 
 all: $(TARGET)
 

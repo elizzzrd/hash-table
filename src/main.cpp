@@ -1,3 +1,5 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -17,16 +19,20 @@ extern FILE * log_fp;
 #define HT_30011 30011
 
 
-inline double get_time_ms(void) 
-{
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (double)ts.tv_sec * 1000.0 + (double)ts.tv_nsec / 1000000.0;
-}
 
 int main(void)
 {
     log_init();
+
+    #ifdef BENCHMARk
+    Hashtable_t ht = {};
+    const char * path = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt";
+    test_ht(path);
+
+    #endif
+
+
+    #ifdef COMPARISON
     const char * data = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin";
     
     HashStats_t * stats = (HashStats_t *) calloc((size_t)hf_info_size, sizeof(HashStats_t));
@@ -43,6 +49,11 @@ int main(void)
     }
     
     free(stats);
+    #endif
+
+    
     log_close();
     return 0;
 }
+
+

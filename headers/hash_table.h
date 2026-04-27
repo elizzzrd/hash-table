@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "text.h"
-
+#include "benchmark.h"
 
 #define HT_CHECK(ht_ptr) \
     do { \
@@ -16,10 +16,9 @@
     
 #define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
 
-
     
-#define HT_DUMP(tree) do { \
-} while(0)
+// #define HT_DUMP(tree) do { \
+// } while(0)
 
 
 typedef enum errors_ht
@@ -75,6 +74,7 @@ void build_hashtable(Hashtable_t * ht, StringArray_t * arr);
 int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word);
 bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word);
 void hashtable_destroy(Hashtable_t * ht);
+bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word);
 
 
 size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename);
@@ -84,4 +84,3 @@ void dump_ht(const Hashtable_t * ht, const char * filename);
 bool hashtable_validate(const Hashtable_t * ht);
 const char * ht_error_string(HT_Err error);
 
-void test_hashtable(Hashtable_t * ht, const char * test_data);

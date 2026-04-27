@@ -110,9 +110,3 @@ void print_table_row(const char *name, HashStats_t s)
            s.average_chain,
            s.variance);
 }
-
-
-void test_hashtable(Hashtable_t * ht, const char * test_data)
-{
-
-}

@@ -6,6 +6,7 @@
 
 
 #include "hash_table.h"
+#include "benchmark.h"
 
 
 bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash)
@@ -184,3 +185,19 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
 
 
 
+bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word)
+{
+    assert(ht && key_word);
+
+    size_t index = ht->hash(key_word) % ((uint64_t)(ht->capacity));
+    Node_t * current = ht->buckets[index];
+
+    while (current != NULL)
+    {
+        if (strcmp(current->word, key_word) == 0)
+            return true;
+        current = current->next;
+    }
+
+    return false;
+}
