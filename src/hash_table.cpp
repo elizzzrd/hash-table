@@ -187,7 +187,11 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
 
 bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word)
 {
-    assert(ht && key_word);
+    assert(ht);
+    if (!key_word) {
+        LOG_MESSAGE("Warning: NULL key_word in hashtable_find_item\n");
+        return false;
+    }
 
     size_t index = ht->hash(key_word) % ((uint64_t)(ht->capacity));
     Node_t * current = ht->buckets[index];

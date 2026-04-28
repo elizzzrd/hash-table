@@ -24,7 +24,7 @@ void test_one_ht_size(int ht_size, HashStats_t * stats, const char * data)
 
         printf("Testing hash function: %s\n", hash_functions[i].name);
         Hashtable_t ht = {};
-        if (!hashtable_init(&ht, ht_size, hash_functions[i].func))
+        if (!hashtable_init(&ht, (size_t)ht_size, hash_functions[i].func))
         {
             fprintf(stderr, "failed to init hash table for %s\n", hash_functions[i].name);
             continue;
@@ -76,7 +76,7 @@ HashStats_t analyze_table(Hashtable_t * ht)
             stats.max_chain = len;
     }
 
-    double mean = (double)(total_elements / ht->size);
+    double mean = ht->size > 0 ? (double)total_elements / ht->size : 0.0;
     stats.average_chain = mean;
 
     double var = 0.0;

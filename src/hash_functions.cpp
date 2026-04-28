@@ -1,7 +1,8 @@
 #include <assert.h>
 #include <string.h>
 #include <stdint.h>
-#include "hash_table.h"
+
+
 #include "hash_functions.h"
 
 #define MAX_WORD_LEN 256
@@ -98,7 +99,7 @@ TODO: add table crc_32/ intrinsic_version
 ==========================================================================*/
 uint64_t hash_crc32(const Elem_t word)
 {
-    assert(word);
+    if (word == NULL || *word == '\0')  return 0;
 
     uint32_t crc = 0xFFFFFFFF;
     uint32_t polynomial = 0xEDB88320;

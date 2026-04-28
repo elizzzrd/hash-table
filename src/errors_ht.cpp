@@ -12,16 +12,20 @@
 
 //======================================================================================
 // LOGS SETTINGS
-const char * log_file = "logger/hashtable.log";
+const char * log_file = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/logger/hashtable.log";
 FILE * log_fp = NULL;
 
 
 
-void log_init(void)
+bool log_initt(void)
 {
     log_fp = fopen(log_file, "a");
-    if (!log_fp) fprintf(stderr, "Can not open log file\n");
-    return;
+    if (!log_fp) 
+    {
+        fprintf(stderr, "Can not open log file\n");
+        return false;
+    } 
+    return true;
 }
 
 void log_close(void)

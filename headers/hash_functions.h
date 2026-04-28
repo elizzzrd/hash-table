@@ -1,9 +1,12 @@
-#pragma once
+#ifndef HASH_FUNCTIONS_H
+#define HASH_FUNCTIONS_H
 
 #include <stdio.h>
 #include <stdint.h>
-#include "hash_table.h"
 
+
+typedef char * Elem_t;
+typedef uint64_t (*hash_func_t)(const Elem_t);
 
 
 typedef struct 
@@ -22,3 +25,4 @@ uint64_t hash_sum(const Elem_t word);
 uint64_t hash_rotate(const Elem_t word);
 uint64_t hash_crc32(const Elem_t word);
 
+#endif

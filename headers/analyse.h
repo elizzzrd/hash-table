@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ANALYSE_H
+#define ANALYSE_H
 
 #include "hash_table.h"
 
@@ -17,3 +18,5 @@ void print_table_row(const char *name, HashStats_t s);
 void print_table_header();
 
 void test_one_ht_size(int ht_size, HashStats_t * stats, const char * data);
+
+#endif

@@ -1,9 +1,25 @@
-#pragma once
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
+
+
 #include <stdio.h>
 #include <stdint.h>
+#include <stdbool.h>
 
+#include "hash_functions.h"
 #include "text.h"
-#include "benchmark.h"
+
+
+#define HT_MAX_SIZE 40000
+#define LIST_SIZE_MAX 25
+
+
+#define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
+bool log_initt(void);
+void log_close(void);
+void log_message(const char * file, int line,const char * format, ...);
+
+
 
 #define HT_CHECK(ht_ptr) \
     do { \
@@ -14,12 +30,6 @@
         return err; \
     } while (0)
     
-#define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
-
-    
-// #define HT_DUMP(tree) do { \
-// } while(0)
-
 
 typedef enum errors_ht
 {
@@ -33,17 +43,6 @@ typedef enum errors_ht
 } HT_Err;
 
 
-void log_init(void);
-void log_close(void);
-void log_message(const char * file, int line,const char * format, ...);
-
-
-#define HT_MAX_SIZE 40000
-#define LIST_SIZE_MAX 25
-typedef char * Elem_t;
-typedef uint64_t (*hash_func_t)(const Elem_t);
-
-
 typedef struct node
 {
     Elem_t word;
@@ -55,6 +54,7 @@ typedef struct node
     struct node * prev;
     struct node * next;
 } Node_t;
+
 
 
 typedef struct 
@@ -84,3 +84,4 @@ void dump_ht(const Hashtable_t * ht, const char * filename);
 bool hashtable_validate(const Hashtable_t * ht);
 const char * ht_error_string(HT_Err error);
 
+#endif

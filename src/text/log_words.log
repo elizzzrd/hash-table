@@ -1,37 +1,37 @@
 
 === struct dirent ===
-d_ini:      69877 (inode number)
+d_ini:      48800 (inode number)
 d_off:      6307374087809080274 (offset to next dirent)
-d_reclen:   40 (length of this record)
+d_reclen:   48 (length of this record)
 d_type:     8 (file type) -> regular file
-d_name:    "war-and-peace.txt" (file name)
+d_name:    "shakespeares-sonnets.txt" (file name)
 
 
-=== struct stat "war-and-peace.txt"===
-st_size:   3202320 bytes (3127.27 KB, 3.05 MB)
+=== struct stat "shakespeares-sonnets.txt"===
+st_size:   99272 bytes (96.95 KB, 0.09 MB)
 st_dev:     2096 (device ID)
-st_ino:     69877 (inode number)
+st_ino:     48800 (inode number)
 
-Collected words: 215413
+Collected words: 6105
 
 STRING_ARRAY (first 20):
-[1] chapter
-[2] prince
-[3] genoa
-[4] lucca
-[5] family
-[6] estates
-[7] buonapartes
-[8] means
-[9] still
-[10] defend
-[11] infamies
-[12] horrors
-[13] perpetrated
-[14] antichrist
-[15] really
-[16] believe
-[17] antichrist
-[18] nothing
-[19] longer
-[20] friend
+[1] sonnets
+[2] william
+[3] shakespeare
+[4] edited
+[5] barbara
+[6] mowat
+[7] werstine
+[8] michael
+[9] poston
+[10] rebecca
+[11] niles
+[12] folger
+[13] shakespeare
+[14] library
+[15] https
+[16] shakespeare
+[17] folger
+[18] shakespeares
+[19] works
+[20] shakespeares

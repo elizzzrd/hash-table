@@ -1,564 +1,79 @@
-[04-27 17-00-37] (src/analyse.cpp:19)	logger_name: logger/0-const.log
+[04-28 16-47-57] (src/main.cpp:29)	LOG INITED
+[04-28 16-47-57] (src/main.cpp:32)	__Benchmark mode__
 
-[04-27 17-00-37] (src/analyse.cpp:23)	csv_name: data_csv/0-const_101.csv
+[04-28 16-47-57] (src/benchmark.cpp:36)	
+========== HASH TABLE FIND BENCHMARK ==========
 
-[04-27 17-00-37] (src/analyse.cpp:33)	hashtable for const inited
+[04-28 16-47-57] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
 
-[04-27 17-00-37] (src/load_ht.cpp:18)	start build hashtable from file
+[04-28 16-47-57] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/test_data.bin
 
-[04-27 17-02-29] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
+[04-28 16-47-57] (src/benchmark.cpp:39)	Table capacity: 3001
 
-[04-27 17-02-29] (src/analyse.cpp:43)	Loaded 636241 words
+[04-28 16-47-57] (src/benchmark.cpp:40)	Repetitions per word: 2000
 
-[04-27 17-02-29] (src/analyse.cpp:46)	starting to analyse
+[04-28 16-47-57] (src/benchmark.cpp:48)	ht inited
+[04-28 16-47-57] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/test_data.bin
+[04-28 16-47-57] (src/load_ht.cpp:18)	start build hashtable from file
 
-[04-27 17-02-29] (src/analyse.cpp:48)	analysis end
+[04-28 16-47-57] (src/load_ht.cpp:77)	Build complete: 215413 words inserted
 
-[04-27 17-02-29] (src/analyse.cpp:51)	data exported to csv
+[04-28 16-47-57] (src/load_ht.cpp:78)	Unique words: 15664
+[04-28 16-47-57] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[04-28 16-47-57] (src/benchmark.cpp:66)	string array inited
+[04-28 16-47-57] (src/benchmark.cpp:74)	words collected
 
-[04-27 17-02-29] (src/analyse.cpp:53)	hashtable for const destroyed
+STRING_ARRAY (first 20):
+[1] chapter
+[2] well
+[3] prince
+[4] genoa
+[5] lucca
+[6] just
+[7] family
+[8] estates
+[9] buonapartes
+[10] warn
+[11] tell
+[12] that
+[13] this
+[14] means
+[15] still
+[16] defend
+[17] infamies
+[18] horrors
+[19] perpetrated
+[20] that
+[04-28 16-47-57] (src/benchmark.cpp:82)	start meauring
+[04-28 16-47-57] (src/benchmark.cpp:147)	Starting find benchmark: 313625 words, 2000 repetitions
 
-[04-27 17-02-29] (src/analyse.cpp:54)	---------------------------------------
+[04-28 16-51-04] (src/benchmark.cpp:171)	Find benchmark completed
 
+[04-28 16-51-04] (src/benchmark.cpp:90)	end measuring
+[04-28 16-51-04] (src/benchmark.cpp:112)	
 
-[04-27 17-02-29] (src/analyse.cpp:19)	logger_name: logger/1-first_char.log
+=================== BENCHMARK RESULTS ===================
+[04-28 16-51-04] (src/benchmark.cpp:113)	Hash function: crc32
 
-[04-27 17-02-29] (src/analyse.cpp:23)	csv_name: data_csv/1-first_char_101.csv
+[04-28 16-51-04] (src/benchmark.cpp:114)	Table size: 3001 buckets
 
-[04-27 17-02-29] (src/analyse.cpp:33)	hashtable for first_char inited
+[04-28 16-51-04] (src/benchmark.cpp:115)	Words count: 313625
 
-[04-27 17-02-29] (src/load_ht.cpp:18)	start build hashtable from file
+[04-28 16-51-04] (src/benchmark.cpp:116)	Total finds: 627250000
+[04-28 16-51-04] (src/benchmark.cpp:118)	CPU cycles:
+[04-28 16-51-04] (src/benchmark.cpp:119)	   CPU cycles total: 687842439464
+[04-28 16-51-04] (src/benchmark.cpp:120)	   Average cycles per find: 1096.00
 
-[04-27 17-02-43] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
+[04-28 16-51-04] (src/benchmark.cpp:122)	Time statictics:
+[04-28 16-51-04] (src/benchmark.cpp:123)	   Total time: 186558.532 ms
+[04-28 16-51-04] (src/benchmark.cpp:124)	   Average time per find: 0.297 μs
 
-[04-27 17-02-43] (src/analyse.cpp:43)	Loaded 636241 words
+[04-28 16-51-04] (src/benchmark.cpp:126)	Search results:
+[04-28 16-51-04] (src/benchmark.cpp:127)	   Found:  430826000 (68.68%)
 
-[04-27 17-02-43] (src/analyse.cpp:46)	starting to analyse
+[04-28 16-51-04] (src/benchmark.cpp:129)	  Not found: 196424000 (31.32%)
 
-[04-27 17-02-43] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-02-43] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-02-43] (src/analyse.cpp:53)	hashtable for first_char destroyed
-
-[04-27 17-02-43] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-02-43] (src/analyse.cpp:19)	logger_name: logger/2-word_len.log
-
-[04-27 17-02-43] (src/analyse.cpp:23)	csv_name: data_csv/2-word_len_101.csv
-
-[04-27 17-02-43] (src/analyse.cpp:33)	hashtable for word_len inited
-
-[04-27 17-02-43] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-02-56] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-02-56] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-02-56] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-02-56] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-02-56] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-02-56] (src/analyse.cpp:53)	hashtable for word_len destroyed
-
-[04-27 17-02-56] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-02-56] (src/analyse.cpp:19)	logger_name: logger/3-sum.log
-
-[04-27 17-02-56] (src/analyse.cpp:23)	csv_name: data_csv/3-sum_101.csv
-
-[04-27 17-02-56] (src/analyse.cpp:33)	hashtable for sum inited
-
-[04-27 17-02-56] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-02-59] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-02-59] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-02-59] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-02-59] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-02-59] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-02-59] (src/analyse.cpp:53)	hashtable for sum destroyed
-
-[04-27 17-02-59] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-02-59] (src/analyse.cpp:19)	logger_name: logger/4-rotate.log
-
-[04-27 17-02-59] (src/analyse.cpp:23)	csv_name: data_csv/4-rotate_101.csv
-
-[04-27 17-02-59] (src/analyse.cpp:33)	hashtable for rotate inited
-
-[04-27 17-02-59] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-03-01] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-03-01] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-03-01] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-03-01] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-03-01] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-03-01] (src/analyse.cpp:53)	hashtable for rotate destroyed
-
-[04-27 17-03-01] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-03-01] (src/analyse.cpp:19)	logger_name: logger/5-crc32.log
-
-[04-27 17-03-01] (src/analyse.cpp:23)	csv_name: data_csv/5-crc32_101.csv
-
-[04-27 17-03-01] (src/analyse.cpp:33)	hashtable for crc32 inited
-
-[04-27 17-03-01] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-03-03] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-03-03] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-03-03] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-03-03] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-03-03] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-03-03] (src/analyse.cpp:53)	hashtable for crc32 destroyed
-
-[04-27 17-03-03] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-03-03] (src/analyse.cpp:19)	logger_name: logger/0-const.log
-
-[04-27 17-03-03] (src/analyse.cpp:23)	csv_name: data_csv/0-const_307.csv
-
-[04-27 17-03-03] (src/analyse.cpp:33)	hashtable for const inited
-
-[04-27 17-03-03] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-04-56] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-04-56] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-04-56] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-04-56] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-04-56] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-04-56] (src/analyse.cpp:53)	hashtable for const destroyed
-
-[04-27 17-04-56] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-04-56] (src/analyse.cpp:19)	logger_name: logger/1-first_char.log
-
-[04-27 17-04-56] (src/analyse.cpp:23)	csv_name: data_csv/1-first_char_307.csv
-
-[04-27 17-04-56] (src/analyse.cpp:33)	hashtable for first_char inited
-
-[04-27 17-04-56] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-05-08] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-05-08] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-05-08] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-05-08] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-05-08] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-05-08] (src/analyse.cpp:53)	hashtable for first_char destroyed
-
-[04-27 17-05-08] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-05-08] (src/analyse.cpp:19)	logger_name: logger/2-word_len.log
-
-[04-27 17-05-08] (src/analyse.cpp:23)	csv_name: data_csv/2-word_len_307.csv
-
-[04-27 17-05-08] (src/analyse.cpp:33)	hashtable for word_len inited
-
-[04-27 17-05-08] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-05-27] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-05-27] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-05-27] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-05-27] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-05-27] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-05-27] (src/analyse.cpp:53)	hashtable for word_len destroyed
-
-[04-27 17-05-27] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-05-27] (src/analyse.cpp:19)	logger_name: logger/3-sum.log
-
-[04-27 17-05-27] (src/analyse.cpp:23)	csv_name: data_csv/3-sum_307.csv
-
-[04-27 17-05-27] (src/analyse.cpp:33)	hashtable for sum inited
-
-[04-27 17-05-27] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-05-28] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-05-28] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-05-28] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-05-28] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-05-28] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-05-28] (src/analyse.cpp:53)	hashtable for sum destroyed
-
-[04-27 17-05-28] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-05-28] (src/analyse.cpp:19)	logger_name: logger/4-rotate.log
-
-[04-27 17-05-28] (src/analyse.cpp:23)	csv_name: data_csv/4-rotate_307.csv
-
-[04-27 17-05-28] (src/analyse.cpp:33)	hashtable for rotate inited
-
-[04-27 17-05-28] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-05-29] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-05-29] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-05-29] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-05-29] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-05-29] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-05-29] (src/analyse.cpp:53)	hashtable for rotate destroyed
-
-[04-27 17-05-29] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-05-29] (src/analyse.cpp:19)	logger_name: logger/5-crc32.log
-
-[04-27 17-05-29] (src/analyse.cpp:23)	csv_name: data_csv/5-crc32_307.csv
-
-[04-27 17-05-29] (src/analyse.cpp:33)	hashtable for crc32 inited
-
-[04-27 17-05-29] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-05-30] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-05-30] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-05-30] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-05-30] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-05-30] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-05-30] (src/analyse.cpp:53)	hashtable for crc32 destroyed
-
-[04-27 17-05-30] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-05-30] (src/analyse.cpp:19)	logger_name: logger/0-const.log
-
-[04-27 17-05-30] (src/analyse.cpp:23)	csv_name: data_csv/0-const_3001.csv
-
-[04-27 17-05-30] (src/analyse.cpp:33)	hashtable for const inited
-
-[04-27 17-05-30] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-07-33] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-07-33] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-07-33] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-07-33] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-07-33] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-07-33] (src/analyse.cpp:53)	hashtable for const destroyed
-
-[04-27 17-07-33] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-07-33] (src/analyse.cpp:19)	logger_name: logger/1-first_char.log
-
-[04-27 17-07-33] (src/analyse.cpp:23)	csv_name: data_csv/1-first_char_3001.csv
-
-[04-27 17-07-33] (src/analyse.cpp:33)	hashtable for first_char inited
-
-[04-27 17-07-33] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-07-44] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-07-44] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-07-44] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-07-44] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-07-44] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-07-44] (src/analyse.cpp:53)	hashtable for first_char destroyed
-
-[04-27 17-07-44] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-07-44] (src/analyse.cpp:19)	logger_name: logger/2-word_len.log
-
-[04-27 17-07-44] (src/analyse.cpp:23)	csv_name: data_csv/2-word_len_3001.csv
-
-[04-27 17-07-44] (src/analyse.cpp:33)	hashtable for word_len inited
-
-[04-27 17-07-44] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-08-02] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-08-02] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-08-02] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-08-02] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-08-02] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-08-02] (src/analyse.cpp:53)	hashtable for word_len destroyed
-
-[04-27 17-08-02] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-08-02] (src/analyse.cpp:19)	logger_name: logger/3-sum.log
-
-[04-27 17-08-02] (src/analyse.cpp:23)	csv_name: data_csv/3-sum_3001.csv
-
-[04-27 17-08-02] (src/analyse.cpp:33)	hashtable for sum inited
-
-[04-27 17-08-02] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-08-02] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-08-02] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-08-02] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-08-02] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-08-02] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-08-02] (src/analyse.cpp:53)	hashtable for sum destroyed
-
-[04-27 17-08-02] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-08-02] (src/analyse.cpp:19)	logger_name: logger/4-rotate.log
-
-[04-27 17-08-02] (src/analyse.cpp:23)	csv_name: data_csv/4-rotate_3001.csv
-
-[04-27 17-08-02] (src/analyse.cpp:33)	hashtable for rotate inited
-
-[04-27 17-08-02] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-08-03] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-08-03] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-08-03] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-08-03] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-08-03] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-08-03] (src/analyse.cpp:53)	hashtable for rotate destroyed
-
-[04-27 17-08-03] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-08-03] (src/analyse.cpp:19)	logger_name: logger/5-crc32.log
-
-[04-27 17-08-03] (src/analyse.cpp:23)	csv_name: data_csv/5-crc32_3001.csv
-
-[04-27 17-08-03] (src/analyse.cpp:33)	hashtable for crc32 inited
-
-[04-27 17-08-03] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-08-03] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-08-03] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-08-03] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-08-03] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-08-03] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-08-03] (src/analyse.cpp:53)	hashtable for crc32 destroyed
-
-[04-27 17-08-03] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-08-03] (src/analyse.cpp:19)	logger_name: logger/0-const.log
-
-[04-27 17-08-03] (src/analyse.cpp:23)	csv_name: data_csv/0-const_30011.csv
-
-[04-27 17-08-03] (src/analyse.cpp:33)	hashtable for const inited
-
-[04-27 17-08-03] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-09-55] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-09-55] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-09-55] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-09-55] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-09-55] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-09-55] (src/analyse.cpp:53)	hashtable for const destroyed
-
-[04-27 17-09-55] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-09-55] (src/analyse.cpp:19)	logger_name: logger/1-first_char.log
-
-[04-27 17-09-55] (src/analyse.cpp:23)	csv_name: data_csv/1-first_char_30011.csv
-
-[04-27 17-09-55] (src/analyse.cpp:33)	hashtable for first_char inited
-
-[04-27 17-09-55] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-10-06] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-10-06] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-10-06] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-10-06] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-10-06] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-10-06] (src/analyse.cpp:53)	hashtable for first_char destroyed
-
-[04-27 17-10-06] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-10-06] (src/analyse.cpp:19)	logger_name: logger/2-word_len.log
-
-[04-27 17-10-06] (src/analyse.cpp:23)	csv_name: data_csv/2-word_len_30011.csv
-
-[04-27 17-10-06] (src/analyse.cpp:33)	hashtable for word_len inited
-
-[04-27 17-10-06] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-10-24] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-10-24] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-10-24] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-10-24] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-10-24] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-10-24] (src/analyse.cpp:53)	hashtable for word_len destroyed
-
-[04-27 17-10-24] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-10-24] (src/analyse.cpp:19)	logger_name: logger/3-sum.log
-
-[04-27 17-10-24] (src/analyse.cpp:23)	csv_name: data_csv/3-sum_30011.csv
-
-[04-27 17-10-24] (src/analyse.cpp:33)	hashtable for sum inited
-
-[04-27 17-10-24] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-10-25] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-10-25] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-10-25] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-10-25] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-10-25] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-10-25] (src/analyse.cpp:53)	hashtable for sum destroyed
-
-[04-27 17-10-25] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-10-25] (src/analyse.cpp:19)	logger_name: logger/4-rotate.log
-
-[04-27 17-10-25] (src/analyse.cpp:23)	csv_name: data_csv/4-rotate_30011.csv
-
-[04-27 17-10-25] (src/analyse.cpp:33)	hashtable for rotate inited
-
-[04-27 17-10-25] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-10-25] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-10-25] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-10-25] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-10-25] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-10-25] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-10-25] (src/analyse.cpp:53)	hashtable for rotate destroyed
-
-[04-27 17-10-25] (src/analyse.cpp:54)	---------------------------------------
-
-
-[04-27 17-10-25] (src/analyse.cpp:19)	logger_name: logger/5-crc32.log
-
-[04-27 17-10-25] (src/analyse.cpp:23)	csv_name: data_csv/5-crc32_30011.csv
-
-[04-27 17-10-25] (src/analyse.cpp:33)	hashtable for crc32 inited
-
-[04-27 17-10-25] (src/load_ht.cpp:18)	start build hashtable from file
-
-[04-27 17-10-26] (src/load_ht.cpp:77)	Build complete: 636241 unique words inserted
-
-[04-27 17-10-26] (src/analyse.cpp:43)	Loaded 636241 words
-
-[04-27 17-10-26] (src/analyse.cpp:46)	starting to analyse
-
-[04-27 17-10-26] (src/analyse.cpp:48)	analysis end
-
-[04-27 17-10-26] (src/analyse.cpp:51)	data exported to csv
-
-[04-27 17-10-26] (src/analyse.cpp:53)	hashtable for crc32 destroyed
-
-[04-27 17-10-26] (src/analyse.cpp:54)	---------------------------------------
-
-
-----------------------------------------------------------------------------------------------------------------
-| Hash function   | Running time (ms) | Running time (s) | Collisions | Max chain  | Avg chain  | Variance     |
-----------------------------------------------------------------------------------------------------------------
-| const           | 0                 | 0                | 28815      | 28816      | 1.00       | 28815.04     |
-| first_char      | 0                 | 0                | 28780      | 3409       | 1.00       | 1714.42      |
-| word_len        | 0                 | 0                | 28800      | 5126       | 1.00       | 3866.75      |
-| sum             | 0                 | 0                | 27630      | 138        | 1.00       | 61.50        |
-| rotate          | 0                 | 0                | 16052      | 18         | 1.00       | 3.03         |
-| crc32           | 0                 | 0                | 11301      | 15         | 1.00       | 1.29         |
+[04-28 16-51-04] (src/main.cpp:37)	tests ended
 
 
 

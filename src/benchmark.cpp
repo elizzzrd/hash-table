@@ -31,34 +31,39 @@ static double get_time_ms(void)
 }
 
 
-Benchmark_Status_t test_ht(const char * path)
+Benchmark_Status_t test_ht(const char * path, const char * data)
 { 
     LOG_MESSAGE("\n========== HASH TABLE FIND BENCHMARK ==========\n");
-    LOG_MESSAGE("Input file: %s\n", path);
+    LOG_MESSAGE("Text file for searching words: %s\n", path);
+    LOG_MESSAGE("Data file: %s\n", data);
     LOG_MESSAGE("Table capacity: %d\n", DEFAULT_BENCHMARK_TABLE_SIZE);
     LOG_MESSAGE("Repetitions per word: %d\n", MAX_BENCHMARK_COMP_NUM);
 
     Hashtable_t ht = {};
     if (!hashtable_init(&ht, DEFAULT_BENCHMARK_TABLE_SIZE, hash_crc32))
     {
-        fprintf(stderr, "failed to init hash table for %s\n", hash_crc32);
+        fprintf(stderr, "failed to init hash table for %s\n", "hash_crc32");
         return BENCHMARK_STATUS_FILE_ERROR;
     }
+    LOG_MESSAGE("ht inited");
 
-    size_t count = build_hashtable_from_file(&ht, path);
+    LOG_MESSAGE("start to build ht from %s", data);
+    size_t count = build_hashtable_from_file(&ht, data);
     if (count == 0)
     {
-        fprintf(stderr, "failed to load data for %s\n", hash_crc32);
+        fprintf(stderr, "failed to load data for %s\n", "hash_crc32");
         hashtable_destroy(&ht);
         return BENCHMARK_STATUS_MEMORY_ERROR;
     }
 
+    LOG_MESSAGE("start to collect words from %s", path);
     StringArray_t arr = {};
     if (!string_array_init(&arr, MAX_WORDS))
     {
         LOG_MESSAGE("Initialization error: string array");
         return BENCHMARK_STATUS_FILE_ERROR;
     }
+    LOG_MESSAGE("string array inited");
 
     if (!collect_words(path, &arr))
     {
@@ -66,12 +71,15 @@ Benchmark_Status_t test_ht(const char * path)
         string_array_free(&arr);
         return BENCHMARK_STATUS_FAIL;
     }
+    LOG_MESSAGE("words collected");
+    strings_array_peep(&arr, 20, log_fp);
 
     BenchmarkResult_t result = {.table_size = DEFAULT_BENCHMARK_TABLE_SIZE, 
                                 .words_count = arr.size,
                                 .found_count = 0,
                                 .not_found_count = 0};
     
+    LOG_MESSAGE("start meauring");
     uint64_t cycle_start = get_current_cycles();
     double time_start = get_time_ms();
 
@@ -79,6 +87,7 @@ Benchmark_Status_t test_ht(const char * path)
 
     uint64_t cycle_end = get_current_cycles();
     double time_end = get_time_ms();
+    LOG_MESSAGE("end measuring");
 
     string_array_free(&arr);
     hashtable_destroy(&ht);
@@ -87,6 +96,8 @@ Benchmark_Status_t test_ht(const char * path)
     result.total_time_ms = time_end - time_start;
 
     print_benchmark_results(&result);
+
+    return BENCHMARK_STATUS_OK;
 }
     
 void print_benchmark_results(BenchmarkResult_t * result)
@@ -127,22 +138,31 @@ Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht, const char * path, String
     assert(ht && path && arr && result);
 
     size_t arr_size = (size_t)arr->size;
+    if (arr_size == 0) {
+        LOG_MESSAGE("Warning: No words to search\n");
+        return BENCHMARK_STATUS_FAIL;
+    }
+
     result->total_finds = arr_size * MAX_BENCHMARK_COMP_NUM;
     LOG_MESSAGE("Starting find benchmark: %zu words, %d repetitions\n", 
-                arr_size , MAX_BENCHMARK_COMP_NUM);
+                arr_size, MAX_BENCHMARK_COMP_NUM);
+    result->found_count = 0;
+    result->not_found_count = 0;
         
-    for (size_t i = 0; i < MAX_BENCHMARK_COMP_NUM; i++) 
-    {
-        char * volatile curr_word = arr->data[i];
-        for (size_t word_num = 0; word_num < arr_size; word_num++) 
-        {
-            if (hashtable_find_item(ht, curr_word))
-            {
-                result->found_count++;
+    for (size_t rep = 0; rep < MAX_BENCHMARK_COMP_NUM; rep++) {
+        
+        for (size_t i = 0; i < arr_size; i++) {
+            
+            if (arr->data[i] == NULL) {
+                LOG_MESSAGE("Warning: NULL word at index %zu\n", i);
+                result->not_found_count++;
+                continue;
             }
-            else
-            {
-                LOG_MESSAGE("Cant find word \"%s\"\n", curr_word);
+            
+            bool found = hashtable_find_item(ht, arr->data[i]);
+            if (found) {
+                result->found_count++;
+            } else {
                 result->not_found_count++;
             }
         }

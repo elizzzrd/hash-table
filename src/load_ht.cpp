@@ -74,7 +74,8 @@ size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename)
     fclose(file);
     if (buffer) free(buffer);
     
-    LOG_MESSAGE("Build complete: %zu unique words inserted\n", inserted);
+    LOG_MESSAGE("Build complete: %zu words inserted\n", inserted);
+    LOG_MESSAGE("Unique words: %zu", ht->size);
     return inserted;
 }
 

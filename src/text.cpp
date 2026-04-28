@@ -204,6 +204,7 @@ bool collect_words(const char * filename, StringArray_t * arr)
         free(buffer);
         return false;
     }
+    buffer[read_symbols] = '\0';
 
     char word[WORD_BUF_SIZE];
     size_t word_len = 0;
@@ -212,6 +213,10 @@ bool collect_words(const char * filename, StringArray_t * arr)
     {
         unsigned char c = (unsigned char)buffer[i];
 
+        if (i == read_symbols) {
+            c = '\0';
+        }
+
         if (isalnum(c))
         {
             if (word_len < WORD_BUF_SIZE - 1)       
@@ -219,14 +224,15 @@ bool collect_words(const char * filename, StringArray_t * arr)
         }
         else
         {
-            if (word_len > 4)
+            if (word_len > 3)
             {
                 word[word_len] = '\0';
-                if (!string_array_push(arr, word))
-                {
-                    free(buffer);
-                    return false;
-                }
+                if (word[0] != '\0') {
+                    if (!string_array_push(arr, word))
+                    {
+                        free(buffer);
+                        return false;
+                    }}
             }
 
             word_len = 0;

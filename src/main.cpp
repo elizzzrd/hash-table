@@ -9,7 +9,7 @@
 #include "hash_table.h"
 #include "analyse.h"
 #include "hash_functions.h"
-
+#include "benchmark.h"
 
 extern FILE * log_fp;
 
@@ -22,13 +22,19 @@ extern FILE * log_fp;
 
 int main(void)
 {
-    log_init();
+    if (!log_initt()) {
+        fprintf(stderr, "Warning: Failed to initialize log\n");
+    }
 
-    #ifdef BENCHMARk
+    LOG_MESSAGE("LOG INITED");
+
+    #ifdef BENCHMARK
+    LOG_MESSAGE("__Benchmark mode__\n");
     Hashtable_t ht = {};
     const char * path = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt";
-    test_ht(path);
-
+    const char * data = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/test_data.bin";
+    test_ht(path, data);
+    LOG_MESSAGE("tests ended");
     #endif
 
 
