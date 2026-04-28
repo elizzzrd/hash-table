@@ -40,7 +40,7 @@ Benchmark_Status_t test_ht(const char * path, const char * data)
     LOG_MESSAGE("Repetitions per word: %d\n", MAX_BENCHMARK_COMP_NUM);
 
     Hashtable_t ht = {};
-    if (!hashtable_init(&ht, DEFAULT_BENCHMARK_TABLE_SIZE, hash_crc32))
+    if (!hashtable_init(&ht, DEFAULT_BENCHMARK_TABLE_SIZE, hash_crc32c_intrinsic))
     {
         fprintf(stderr, "failed to init hash table for %s\n", "hash_crc32");
         return BENCHMARK_STATUS_FILE_ERROR;
@@ -83,7 +83,7 @@ Benchmark_Status_t test_ht(const char * path, const char * data)
     uint64_t cycle_start = get_current_cycles();
     double time_start = get_time_ms();
 
-    Benchmark_Status_t status = benchmark_find_ht(&ht, path, &arr, &result);
+    benchmark_find_ht(&ht,&arr, &result);
 
     uint64_t cycle_end = get_current_cycles();
     double time_end = get_time_ms();
@@ -104,38 +104,38 @@ void print_benchmark_results(BenchmarkResult_t * result)
 {
     assert(result);
 
-    result->avg_cycles_per_find = result->total_cycles / result->total_finds;
-    result->avg_time_per_find = result->total_time_ms / result->total_finds;
+    result->avg_cycles_per_find = (double)(result->total_cycles) / (double)(result->total_finds);
+    result->avg_time_per_find = (double)(result->total_time_ms) / (double)(result->total_finds);
     result->hash_func_name = "crc32";
 
-
-    LOG_MESSAGE("\n\n=================== BENCHMARK RESULTS ===================");
-    LOG_MESSAGE("Hash function: %s\n", result->hash_func_name);
-    LOG_MESSAGE("Table size: %zu buckets\n", result->table_size);
-    LOG_MESSAGE("Words count: %zu\n", result->words_count);
-    LOG_MESSAGE("Total finds: %zu", result->total_finds);
-
-    LOG_MESSAGE("CPU cycles:");
-    LOG_MESSAGE("   CPU cycles total: %lu", result->total_cycles);
-    LOG_MESSAGE("   Average cycles per find: %.2f\n", result->avg_cycles_per_find);
-
-    LOG_MESSAGE("Time statictics:");
-    LOG_MESSAGE("   Total time: %.3f ms", result->total_time_ms);
-    LOG_MESSAGE("   Average time per find: %.3f μs\n", result->avg_time_per_find * 1000);
     
-    LOG_MESSAGE("Search results:");
-    LOG_MESSAGE("   Found:  %zu (%.2f%%)\n", result->found_count,
-           (double)result->found_count / result->total_finds * 100.0);
-    LOG_MESSAGE("  Not found: %zu (%.2f%%)\n", result->not_found_count,
-           (double)result->not_found_count / result->total_finds * 100.0);
+    log_message(__FILE__, __LINE__, "\n\n=================== BENCHMARK RESULTS ===================");
+    log_message(__FILE__, __LINE__, "Hash function: %s\n", result->hash_func_name);
+    log_message(__FILE__, __LINE__, "Table size: %zu buckets\n", result->table_size);
+    log_message(__FILE__, __LINE__, "Words count: %zu\n", result->words_count);
+    log_message(__FILE__, __LINE__, "Total finds: %zu", result->total_finds);
+
+    log_message(__FILE__, __LINE__, "CPU cycles:");
+    log_message(__FILE__, __LINE__, "   CPU cycles total: %lu", result->total_cycles);
+    log_message(__FILE__, __LINE__, "   Average cycles per find: %.2f\n", result->avg_cycles_per_find);
+
+    log_message(__FILE__, __LINE__, "Time statictics:");
+    log_message(__FILE__, __LINE__, "   Total time: %.3f ms", result->total_time_ms);
+    log_message(__FILE__, __LINE__, "   Average time per find: %.3f μs\n", result->avg_time_per_find * 1000);
+    
+    log_message(__FILE__, __LINE__, "Search results:");
+    log_message(__FILE__, __LINE__, "   Found:  %zu (%.2f%%)\n", result->found_count,
+           (double)(result->found_count) / (double)(result->total_finds * 100.0));
+    log_message(__FILE__, __LINE__, "  Not found: %zu (%.2f%%)\n", result->not_found_count,
+           (double)(result->not_found_count) / (double)(result->total_finds * 100.0));
 }
 
 
 // TO DO: добавить поиск несуществующих слов
 // Бенчмарк поиска слов
-Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht, const char * path, StringArray_t * arr, BenchmarkResult_t * result) 
+Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht, StringArray_t * arr, BenchmarkResult_t * result) 
 {
-    assert(ht && path && arr && result);
+    assert(ht && arr && result);
 
     size_t arr_size = (size_t)arr->size;
     if (arr_size == 0) {
@@ -153,13 +153,13 @@ Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht, const char * path, String
         
         for (size_t i = 0; i < arr_size; i++) {
             
-            if (arr->data[i] == NULL) {
-                LOG_MESSAGE("Warning: NULL word at index %zu\n", i);
+            if (arr->data[i].length == 0) {
+                LOG_MESSAGE("Warning: Empty word at index %zu\n", i);
                 result->not_found_count++;
                 continue;
             }
             
-            bool found = hashtable_find_item(ht, arr->data[i]);
+            bool found = hashtable_find_item(ht, &arr->data[i]);
             if (found) {
                 result->found_count++;
             } else {

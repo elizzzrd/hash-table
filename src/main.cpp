@@ -32,7 +32,7 @@ int main(void)
     LOG_MESSAGE("__Benchmark mode__\n");
     Hashtable_t ht = {};
     const char * path = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt";
-    const char * data = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/test_data.bin";
+    const char * data = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin";
     test_ht(path, data);
     LOG_MESSAGE("tests ended");
     #endif
@@ -44,9 +44,9 @@ int main(void)
     HashStats_t * stats = (HashStats_t *) calloc((size_t)hf_info_size, sizeof(HashStats_t));
 
     test_one_ht_size(HT_101, stats, data);
-    test_one_ht_size(HT_307, stats, data);
-    test_one_ht_size(HT_3001, stats, data);
-    test_one_ht_size(HT_30011, stats, data);
+    // test_one_ht_size(HT_307, stats, data);
+    // test_one_ht_size(HT_3001, stats, data);
+    // test_one_ht_size(HT_30011, stats, data);
 
     print_table_header();
     for (int i = 0; i < hf_info_size; i++)

@@ -19,16 +19,11 @@ HashFunctionInfo hash_functions[] =
 int hf_info_size = sizeof(hash_functions)/sizeof(hash_functions[0]);
 
 
-static uint64_t rotate_left(uint64_t value, int shift)
-{
-    return (value << shift) | (value >> (64 - shift));
-}
-
 
 /*==========================================================================
 Пустышка
 ==========================================================================*/
-uint64_t hash_const(const Elem_t word)
+uint64_t hash_const(const Elem_t * word)
 {
     assert(word);
 
@@ -39,34 +34,34 @@ uint64_t hash_const(const Elem_t word)
 /*==========================================================================
 first_letter_hash
 ==========================================================================*/
-uint64_t hash_first_char(const Elem_t word)
+uint64_t hash_first_char(const Elem_t * word)
 {
     assert(word);
 
-    return (uint64_t)word[0];
+    return (uint64_t)word->data[0];
 }
 
 /*==========================================================================
 word_len_hash
 ==========================================================================*/
-uint64_t hash_word_len(const Elem_t word)
+uint64_t hash_word_len(const Elem_t * word)
 {
     assert(word);
 
-    return strnlen(word, MAX_WORD_LEN);
+    return (uint64_t)word->length;
 }
 
 /*==========================================================================
 checksum
 ==========================================================================*/
-uint64_t hash_sum(const Elem_t word)
+uint64_t hash_sum(const Elem_t * word)
 {
     assert(word);
 
     uint64_t hash = 0;
-    uint64_t word_length =strnlen(word, MAX_WORD_LEN);
+    uint64_t word_length = word->length;
     for (uint64_t i = 0; i < word_length; i++)
-        hash += (uint64_t)word[i];
+        hash += (uint64_t)(unsigned int)word->data[i];
     
     return (uint64_t)hash;
 }
@@ -74,20 +69,20 @@ uint64_t hash_sum(const Elem_t word)
 /*==========================================================================
 rotate left
 ==========================================================================*/
-uint64_t hash_rotate(const Elem_t word)
+uint64_t hash_rotate(const Elem_t * word)
 {
     assert(word);
 
-    uint64_t word_length = strnlen(word, MAX_WORD_LEN);
+    uint64_t word_length = word->length;
     if (word_length == 0)   return 0;
     
-    uint64_t hash = (uint64_t)word[0];
+    uint64_t hash = (uint64_t)word->data[0];
 
-    for (size_t i = 1; i <= word_length; i++)
-    {
-        hash = rotate_left(hash, 1);
-        hash ^= (uint64_t)word[i];
+    for (uint8_t i = 1; i < word->length; i++) {
+        hash = (hash << 1) | (hash >> 63);
+        hash ^= (uint64_t)word->data[i];
     }
+    return hash;
 
     return hash;
 }
@@ -97,23 +92,19 @@ uint64_t hash_rotate(const Elem_t word)
 CRC_32
 TODO: add table crc_32/ intrinsic_version
 ==========================================================================*/
-uint64_t hash_crc32(const Elem_t word)
+uint64_t hash_crc32(const Elem_t * word)
 {
-    if (word == NULL || *word == '\0')  return 0;
+    if (word == NULL)  return 0;
 
     uint32_t crc = 0xFFFFFFFF;
     uint32_t polynomial = 0xEDB88320;
 
-    uint64_t word_length = strnlen(word, MAX_WORD_LEN);
+    uint64_t word_length = word->length;
     if (word_length == 0)   return 0;
     
-
-    for (size_t byte_index = 1; byte_index <= word_length; byte_index++)
-    {
-        crc ^= (unsigned char)word[byte_index];
-
-        for (int bits = 0; bits < 8; bits++)
-        {
+    for (uint8_t i = 0; i < word->length; i++) {
+        crc ^= (unsigned char)word->data[i];
+        for (int bits = 0; bits < 8; bits++) {
             if (crc & 1)
                 crc = (crc >> 1) ^ polynomial;
             else
@@ -122,6 +113,44 @@ uint64_t hash_crc32(const Elem_t word)
     }
 
     return (uint64_t)crc ^ 0xFFFFFFFF;
+}
+
+
+
+/*==========================================================================
+CRC_32_INTRINSICS
+==========================================================================*/
+uint64_t hash_crc32c_intrinsic(const Elem_t * word) 
+{
+    uint32_t hash = 0xFFFFFFFF;
+    uint8_t len = word->length;
+    const char * str = word->data;
+    
+    while (len >= 8) 
+    {
+        hash = _mm_crc32_u32(hash, *(const uint32_t*)str);
+        hash = _mm_crc32_u32(hash, *(const uint32_t*)(str + 4));
+        str += 8;
+        len -= 8;
+    }
+    
+    if (len >= 4) {
+        hash = _mm_crc32_u32(hash, *(const uint32_t*)str);          // 4 bytes
+        str += 4;
+        len -= 4;
+    }
+    
+    if (len >= 2) {
+        hash = _mm_crc32_u16(hash, *(const uint16_t*)str);          // 2 bytes
+        str += 2;
+        len -= 2;
+    }
+    
+    if (len >= 1) {
+        hash = _mm_crc32_u8(hash, (uint8_t)*str);                   // 1 byte
+    }
+    
+    return (uint64_t)hash;
 }
 
 

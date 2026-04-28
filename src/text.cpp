@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdint.h>
 #include <sys/stat.h>
 #include "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/headers/text.h"
 
@@ -19,22 +20,16 @@ bool export_words(const StringArray_t * arr, const char * filename)
         return false;
     }
     
-    
-    const size_t BUFFER_SIZE = 1024 * 1024;  
-    char * buffer = (char *)malloc(BUFFER_SIZE);
+    const size_t BUFFER_SIZE = 2 * 1024 * 1024;
+    char* buffer = (char*)malloc(BUFFER_SIZE);
     if (buffer) {
         setvbuf(file, buffer, _IOFBF, BUFFER_SIZE);
     }
-    
+
     size_t written = 0;
     for (size_t i = 0; i < arr->size; i++) {
-        if (arr->data[i] != NULL) {
-            size_t len = strlen(arr->data[i]);
-            
-            fwrite(&len, sizeof(size_t), 1, file);
-            fwrite(arr->data[i], sizeof(char), len, file);
-            written++;
-        }
+        fwrite(&arr->data[i], sizeof(Word_t), 1, file);
+        written++;
     }
     
     fclose(file);
@@ -50,7 +45,7 @@ bool string_array_init(StringArray_t * array, size_t initial_capacity)
 {
     assert(array);
 
-    array->data = (char**)calloc((size_t)initial_capacity, sizeof(char*));
+    array->data = (Word_t*)calloc((size_t)initial_capacity, sizeof(Word_t));
     if (array->data == NULL) 
     {
         fprintf(stderr, "Memory allocation failed\n");
@@ -67,9 +62,6 @@ void string_array_free(StringArray_t * array)
 {
     if (array == NULL || array->data == NULL)
         return;
-
-    for (size_t i = 0; i < array->size; i++)
-        free(array->data[i]);
     
     free(array->data);
     array->data = NULL;
@@ -83,14 +75,17 @@ bool string_array_push(StringArray_t * array, const char * word)
     assert(array && word);
     string_array_resize(array);
     
-    array->data[array->size] = strdup(word);
-    if (array->data[array->size] == NULL)
-    {
-        fprintf(stderr, "strdup failed\n");
+    size_t len = strlen(word);
+    if (len >= MAX_WORD_LEN) {
+        fprintf(stderr, "Word too long: %s (len=%zu)\n", word, len);
         return false;
     }
 
+    memset(array->data[array->size].data, 0, MAX_WORD_LEN);
+    memcpy(array->data[array->size].data, word, len);
+    array->data[array->size].length = (uint8_t)len;
     array->size++;
+    
     return true;
 }
 
@@ -105,7 +100,7 @@ bool string_array_resize(StringArray_t * array)
         if (new_capacity == 0)
             new_capacity = 16;
 
-        char ** new_data = (char **) realloc(array->data, new_capacity * sizeof(char *));
+        Word_t * new_data = (Word_t *) realloc(array->data, new_capacity * sizeof(Word_t));
         if (new_data == NULL)
         {
             fprintf(stderr, "realloc error\n");
@@ -125,9 +120,12 @@ void strings_array_peep(StringArray_t * array, int count, FILE * fp)
     assert(array);
     
     fprintf(fp, "\nSTRING_ARRAY (first %d):\n", count);
-    for (int i = 0; i < count; i++) 
-    {
-        fprintf(fp, "[%d] %s\n", i + 1, array->data[i]);
+    for (int i = 0; i < count && i < (int)array->size; i++) {
+        fprintf(fp, "[%d] %.*s (len=%d)\n", 
+                i + 1, 
+                array->data[i].length, 
+                array->data[i].data,
+                array->data[i].length);
     }
 }
 
@@ -224,7 +222,7 @@ bool collect_words(const char * filename, StringArray_t * arr)
         }
         else
         {
-            if (word_len > 3)
+            if (word_len > 3 && word_len < 16)
             {
                 word[word_len] = '\0';
                 if (word[0] != '\0') {

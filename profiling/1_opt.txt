@@ -1,0 +1,68 @@
+what new:
+    crc32_intricisc
+    word_equal - strcmp
+    Word_t - strlen больше не нужен
+
+=================== BENCHMARK RESULTS ===================
+[04-28 23-19-12] (src/benchmark.cpp:113)	Hash function: crc32
+
+[04-28 23-19-12] (src/benchmark.cpp:114)	Table size: 3001 buckets
+
+[04-28 23-19-12] (src/benchmark.cpp:115)	Words count: 313557
+
+[04-28 23-19-12] (src/benchmark.cpp:116)	Total finds: 627114000
+[04-28 23-19-12] (src/benchmark.cpp:118)	CPU cycles:
+[04-28 23-19-12] (src/benchmark.cpp:119)	   CPU cycles total: 97244295786
+[04-28 23-19-12] (src/benchmark.cpp:120)	   Average cycles per find: 155.07
+
+[04-28 23-19-12] (src/benchmark.cpp:122)	Time statictics:
+[04-28 23-19-12] (src/benchmark.cpp:123)	   Total time: 26379.139 ms
+[04-28 23-19-12] (src/benchmark.cpp:124)	   Average time per find: 0.042 μs
+
+[04-28 23-19-12] (src/benchmark.cpp:126)	Search results:
+[04-28 23-19-12] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+
+[04-28 23-19-12] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
+
+
+=================== BENCHMARK RESULTS ===================
+[04-28 23-22-17] (src/benchmark.cpp:113)	Hash function: crc32
+
+[04-28 23-22-17] (src/benchmark.cpp:114)	Table size: 3001 buckets
+
+[04-28 23-22-17] (src/benchmark.cpp:115)	Words count: 313557
+
+[04-28 23-22-17] (src/benchmark.cpp:116)	Total finds: 627114000
+[04-28 23-22-17] (src/benchmark.cpp:118)	CPU cycles:
+[04-28 23-22-17] (src/benchmark.cpp:119)	   CPU cycles total: 90395976715
+[04-28 23-22-17] (src/benchmark.cpp:120)	   Average cycles per find: 144.15
+
+[04-28 23-22-17] (src/benchmark.cpp:122)	Time statictics:
+[04-28 23-22-17] (src/benchmark.cpp:123)	   Total time: 24477.477 ms
+[04-28 23-22-17] (src/benchmark.cpp:124)	   Average time per find: 0.039 μs
+
+[04-28 23-22-17] (src/benchmark.cpp:126)	Search results:
+[04-28 23-22-17] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+
+[04-28 23-22-17] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
+
+=================== BENCHMARK RESULTS ===================
+[04-28 23-23-04] (src/benchmark.cpp:113)	Hash function: crc32
+
+[04-28 23-23-04] (src/benchmark.cpp:114)	Table size: 3001 buckets
+
+[04-28 23-23-04] (src/benchmark.cpp:115)	Words count: 313557
+
+[04-28 23-23-04] (src/benchmark.cpp:116)	Total finds: 627114000
+[04-28 23-23-04] (src/benchmark.cpp:118)	CPU cycles:
+[04-28 23-23-04] (src/benchmark.cpp:119)	   CPU cycles total: 90959088958
+[04-28 23-23-04] (src/benchmark.cpp:120)	   Average cycles per find: 145.04
+
+[04-28 23-23-04] (src/benchmark.cpp:122)	Time statictics:
+[04-28 23-23-04] (src/benchmark.cpp:123)	   Total time: 24597.652 ms
+[04-28 23-23-04] (src/benchmark.cpp:124)	   Average time per find: 0.039 μs
+
+[04-28 23-23-04] (src/benchmark.cpp:126)	Search results:
+[04-28 23-23-04] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+
+[04-28 23-23-04] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)

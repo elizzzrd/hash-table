@@ -1,6 +1,6 @@
 CXX := g++
 
-CXXFLAGS := -g -DDEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
+CXXFLAGS := -g -DNDEBUG -ggdb3 -std=c++17 -O3 -Wall -Wextra -Weffc++ \
  -Waggressive-loop-optimizations -Wc++14-compat -Wmissing-declarations \
  -Wcast-align -Wcast-qual -Wchar-subscripts -Wconditionally-supported \
  -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal \
@@ -20,7 +20,7 @@ CXXFLAGS := -g -DDEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
 
 SIMD_FLAGS := -mavx2 -mfma
 
-SANITIZERS := -fsanitize=address,alignment,bool,bounds,enum,float-cast-overflow,float-divide-by-zero,integer-divide-by-zero,leak,nonnull-attribute,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vptr
+#SANITIZERS := -fsanitize=address,alignment,bool,bounds,enum,float-cast-overflow,float-divide-by-zero,integer-divide-by-zero,leak,nonnull-attribute,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vptr
 
 CXXFLAGS += $(SIMD_FLAGS)
 CXXFLAGS += -march=native -fno-omit-frame-pointer
@@ -59,7 +59,7 @@ comparison: $(TARGET_COMPARISON)
 
 $(TARGET_COMPARISON): $(OTHER_OBJS) $(OBJ_DIR)/main_comparison.o | $(BIN_DIR)
 	@echo " Linking comparison..."
-	@$(CXX) $^ $(SANITIZERS) -o $@
+	@$(CXX) $^ -o $@
 	@echo " Comparison ready: $@"
 
 
@@ -67,7 +67,7 @@ benchmark: $(TARGET_BENCHMARK)
 
 $(TARGET_BENCHMARK): $(OTHER_OBJS) $(OBJ_DIR)/main_benchmark.o | $(BIN_DIR)
 	@echo " Linking benchmark..."
-	@$(CXX) $^ $(SANITIZERS) -o $@
+	@$(CXX) $^ -o $@
 	@echo " Benchmark ready: $@"
 
 

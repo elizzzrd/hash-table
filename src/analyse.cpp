@@ -76,7 +76,7 @@ HashStats_t analyze_table(Hashtable_t * ht)
             stats.max_chain = len;
     }
 
-    double mean = ht->size > 0 ? (double)total_elements / ht->size : 0.0;
+    double mean = (ht->size > 0) ? (double)(total_elements / ht->size) : 0.0;
     stats.average_chain = mean;
 
     double var = 0.0;

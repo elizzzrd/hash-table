@@ -4,14 +4,25 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #define MAX_WORDS 40000
 #define WORD_BUF_SIZE 256
 
+#define MAX_WORD_LEN 16
 
 typedef struct 
 {
-    char ** data;
+    char data[MAX_WORD_LEN];
+    uint8_t length;
+} Word_t;
+
+typedef Word_t Elem_t;
+
+
+typedef struct 
+{
+    Word_t * data;
     size_t size;
     size_t capacity;
 } StringArray_t;

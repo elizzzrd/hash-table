@@ -9,6 +9,23 @@
 #include "benchmark.h"
 
 
+//======================================================================================
+static inline bool word_equal(const Elem_t * a, const Elem_t * b)
+{
+    if (a->length != b->length)     return false;
+    if (a->length == 0)             return false;
+
+    __m128i va = _mm_loadu_si128((const __m128i *)a->data);
+    __m128i vb = _mm_loadu_si128((const __m128i *)b->data);
+
+    __m128i cmp = _mm_cmpeq_epi8(va, vb);
+
+    return _mm_movemask_epi8(cmp) == 0xFFFF;
+}
+//======================================================================================
+
+
+
 bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash)
 {
     assert(ht && capacity > 0);
@@ -44,7 +61,6 @@ void hashtable_destroy(Hashtable_t * ht)
             Node_t * to_delete = current;
             current = current->next;
             
-            free(to_delete->word);
             free(to_delete);
         }
     }
@@ -58,15 +74,9 @@ void hashtable_destroy(Hashtable_t * ht)
 }
 
 
-HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word)
+HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t * word)
 {
     assert(ht && word);
-
-    // if (ht->size > ht->capacity)
-    // {
-    //     fprintf(stderr, "hashtable is full\n");
-    //     return HT_OVERFLOW;
-    // }    
 
     size_t index = (ht->hash(word)) % ((uint64_t)(ht->capacity));
     Node_t * current = ht->buckets[index];
@@ -74,7 +84,7 @@ HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word)
     // searching for word in bucket
     while (current != NULL)
     {
-        if (strcmp(current->word, word) == 0)
+        if (word_equal(&current->word, word))
         {
             current->size++;
             return HT_OK;
@@ -90,14 +100,7 @@ HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word)
         return HT_MEMORY_ALLOCATION_ERROR;
     }
 
-    new_node->word = strdup(word);
-    if (!new_node->word)
-    {
-        fprintf(stderr, "memory allocation error\n");
-        free(new_node);
-        return HT_MEMORY_ALLOCATION_ERROR;
-    }
-
+    new_node->word = *(word);
     new_node->size = 1;
     new_node->next = ht->buckets[index];
     new_node->prev = NULL;
@@ -114,26 +117,17 @@ HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word)
 }
 
 
-void build_hashtable(Hashtable_t * ht, StringArray_t * arr)
+
+int hashtable_get_item_count(Hashtable_t * ht, Elem_t * key_word)
 {
-    assert(ht && arr);
-
-    for (size_t i = 0; i < arr->size; i++)
-        if (hashtable_insert(ht, arr->data[i]) != HT_OK)
-            fprintf(stderr, "warning: failed to insert '%s' at index %zu\n", arr->data[i], i);
-}
-
-
-int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word)
-{
-    assert(key_word && ht);
+    assert(ht);
 
     size_t index = ht->hash(key_word) % ((uint64_t)(ht->capacity));
     Node_t * current = ht->buckets[index];
     
     while (current != NULL)
     {
-        if (strcmp(current->word, key_word) == 0)
+        if (word_equal(&current->word, key_word))
         {
             return current->size;
         }
@@ -144,7 +138,7 @@ int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word)
 }
 
 
-bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
+bool hashtable_delete_item(Hashtable_t * ht, const Elem_t * key_word)
 {
     assert(key_word && ht);
 
@@ -154,7 +148,7 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
     
     while (current != NULL)
     {
-        if (strcmp(current->word, key_word) == 0)
+        if (word_equal(&current->word, key_word))
         {
             if (current->prev != NULL)
             {
@@ -170,7 +164,6 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
                 current->next->prev = current->prev;
             }
               
-            free(current->word);
             free(current);
 
             ht->size--;
@@ -185,7 +178,7 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word)
 
 
 
-bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word)
+bool hashtable_find_item(Hashtable_t * ht, const Elem_t * key_word)
 {
     assert(ht);
     if (!key_word) {
@@ -198,10 +191,12 @@ bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word)
 
     while (current != NULL)
     {
-        if (strcmp(current->word, key_word) == 0)
+        if (word_equal(&current->word, key_word))
             return true;
         current = current->next;
     }
 
     return false;
 }
+
+

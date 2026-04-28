@@ -23,56 +23,32 @@ size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename)
         return 0;
     }
     
-    const size_t BUFFER_SIZE = 2 * 1024 * 1024;  
-    char * buffer = (char *)malloc(BUFFER_SIZE);
+
+    const size_t BUFFER_SIZE = 2 * 1024 * 1024;
+    char* buffer = (char*)malloc(BUFFER_SIZE);
     if (buffer) {
         setvbuf(file, buffer, _IOFBF, BUFFER_SIZE);
     }
-    
+
     size_t inserted = 0;
+    Elem_t word;
+
     
-    while (!feof(file)) {
-        size_t word_len;
-        if (fread(&word_len, sizeof(size_t), 1, file) != 1) {
-            break;
-        }
-        
-        if (word_len == 0 || word_len > 10000) {
-            fprintf(stderr, "Warning: Skipping invalid word length %zu\n", word_len);
-            fseek(file, (long)word_len, SEEK_CUR);
+    while (fread(&word, sizeof(Elem_t), 1, file) == 1)
+    {
+        if (word.length == 0 || word.length > MAX_WORD_LEN)
+        {
+            fprintf(stderr, "warning: invalid word size\n");
             continue;
         }
-        
-        // temporary word buffer
-        char * word = (char *)malloc(word_len + 1);
-        if (!word) {
-            fprintf(stderr, "Error: Memory allocation failed\n");
-            break;
-        }
-        
-        if (fread(word, sizeof(char), word_len, file) != word_len) {
-            free(word);
-            fprintf(stderr, "Error: Failed to read word data\n");
-            break;
-        }
-        
-        word[word_len] = '\0';
-        
-        HT_Err err = hashtable_insert(ht, word);
-        if (err == HT_OK) {
+        HT_Err err = hashtable_insert(ht, &word);
+        if (err == HT_OK) 
             inserted++;
-        }
-        //  else if (err == HT_OVERFLOW) {
-        //     fprintf(stderr, "Error: Hash table overflow at %zu words\n", inserted);
-        //     free(word);
-        //     break;
-        // } 
-        
-        free(word);
     }
     
+    
     fclose(file);
-    if (buffer) free(buffer);
+    if (buffer)     free(buffer);
     
     LOG_MESSAGE("Build complete: %zu words inserted\n", inserted);
     LOG_MESSAGE("Unique words: %zu", ht->size);

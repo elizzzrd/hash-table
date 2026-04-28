@@ -98,7 +98,7 @@ void dump_ht(const Hashtable_t * ht, const char * filename)
             while (current != NULL)
             {
                 fprintf(fp, "[%p] \"%s\" (size=%d, prev=%p, next=%p)", 
-                       (void*)current, current->word, current->size,
+                       (void*)current, current->word.data, current->size,
                        (void*)current->prev, (void*)current->next);
                 count++;
                 
@@ -118,7 +118,7 @@ void dump_ht(const Hashtable_t * ht, const char * filename)
     fclose(fp);
 }
 
-
+/*
 bool hashtable_validate(const Hashtable_t * ht)
 {
     if (!ht) return false;
@@ -166,7 +166,7 @@ bool hashtable_validate(const Hashtable_t * ht)
     
     return true;
 }
-    
+*/ 
 
 const char * ht_error_string(HT_Err error) 
 {
@@ -186,3 +186,4 @@ const char * ht_error_string(HT_Err error)
 }
 
 //======================================================================================
+

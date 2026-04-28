@@ -2,6 +2,14 @@
 #define HASH_TABLE_H
 
 
+#ifdef BENCHMARK
+    #define LOG_MESSAGE(format, ...)  
+    #define NDEBUG
+#else
+    #define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
+#endif
+
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -69,19 +77,19 @@ typedef struct
 
 
 bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash);
-HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t word);
+HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t * word);
 void build_hashtable(Hashtable_t * ht, StringArray_t * arr);
-int hashtable_get_item_count(Hashtable_t * ht, Elem_t key_word);
-bool hashtable_delete_item(Hashtable_t * ht, const Elem_t key_word);
+int hashtable_get_item_count(Hashtable_t * ht, Elem_t * key_word);
+bool hashtable_delete_item(Hashtable_t * ht, const Elem_t * key_word);
 void hashtable_destroy(Hashtable_t * ht);
-bool hashtable_find_item(Hashtable_t * ht, const Elem_t key_word);
+bool hashtable_find_item(Hashtable_t * ht, const Elem_t * key_word);
 
 
 size_t build_hashtable_from_file(Hashtable_t * ht, const char * filename);
 void export_to_csv(Hashtable_t * ht, const char * filename);
 
 void dump_ht(const Hashtable_t * ht, const char * filename);
-bool hashtable_validate(const Hashtable_t * ht);
+//bool hashtable_validate(const Hashtable_t * ht);
 const char * ht_error_string(HT_Err error);
 
 #endif

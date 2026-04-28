@@ -3,3 +3,4 @@
 /logger
 *.bin
 *.out
+*.sh

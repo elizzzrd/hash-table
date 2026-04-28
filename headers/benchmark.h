@@ -38,7 +38,7 @@ typedef struct
 
 void print_benchmark_results(BenchmarkResult_t * result);
 Benchmark_Status_t test_ht(const char * path, const char * data);
-Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht, const char * path, 
+Benchmark_Status_t benchmark_find_ht(Hashtable_t * ht,
                                     StringArray_t * arr, BenchmarkResult_t * result);
 
 
