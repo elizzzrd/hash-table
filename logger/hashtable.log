@@ -1,27 +1,24 @@
-[04-28 23-18-45] (src/main.cpp:29)	LOG INITED
-[04-28 23-18-45] (src/main.cpp:32)	__Benchmark mode__
-
-[04-28 23-18-45] (src/benchmark.cpp:36)	
+[05-01 00-19-21] (src/benchmark.cpp:36)	
 ========== HASH TABLE FIND BENCHMARK ==========
 
-[04-28 23-18-45] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-19-21] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
 
-[04-28 23-18-45] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-19-21] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
 
-[04-28 23-18-45] (src/benchmark.cpp:39)	Table capacity: 3001
+[05-01 00-19-21] (src/benchmark.cpp:39)	Table capacity: 3001
 
-[04-28 23-18-45] (src/benchmark.cpp:40)	Repetitions per word: 2000
+[05-01 00-19-21] (src/benchmark.cpp:40)	Repetitions per word: 2000
 
-[04-28 23-18-45] (src/benchmark.cpp:48)	ht inited
-[04-28 23-18-45] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
-[04-28 23-18-45] (src/load_ht.cpp:18)	start build hashtable from file
+[05-01 00-19-21] (src/benchmark.cpp:48)	ht inited
+[05-01 00-19-21] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-19-21] (src/load_ht.cpp:18)	start build hashtable from file
 
-[04-28 23-18-45] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
+[05-01 00-19-21] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
 
-[04-28 23-18-45] (src/load_ht.cpp:54)	Unique words: 16927
-[04-28 23-18-45] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
-[04-28 23-18-45] (src/benchmark.cpp:66)	string array inited
-[04-28 23-18-45] (src/benchmark.cpp:74)	words collected
+[05-01 00-19-21] (src/load_ht.cpp:54)	Unique words: 16927
+[05-01 00-19-21] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-19-21] (src/benchmark.cpp:66)	string array inited
+[05-01 00-19-21] (src/benchmark.cpp:74)	words collected
 
 STRING_ARRAY (first 20):
 [1] chapter (len=7)
@@ -44,63 +41,59 @@ STRING_ARRAY (first 20):
 [18] horrors (len=7)
 [19] perpetrated (len=11)
 [20] that (len=4)
-[04-28 23-18-45] (src/benchmark.cpp:82)	start meauring
-[04-28 23-18-45] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
+[05-01 00-19-21] (src/benchmark.cpp:82)	start meauring
+[05-01 00-19-21] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
 
-[04-28 23-19-12] (src/benchmark.cpp:171)	Find benchmark completed
+[05-01 00-19-48] (src/benchmark.cpp:171)	Find benchmark completed
 
-[04-28 23-19-12] (src/benchmark.cpp:90)	end measuring
-[04-28 23-19-12] (src/benchmark.cpp:112)	
+[05-01 00-19-48] (src/benchmark.cpp:90)	end measuring
+[05-01 00-19-48] (src/benchmark.cpp:112)	
 
 =================== BENCHMARK RESULTS ===================
-[04-28 23-19-12] (src/benchmark.cpp:113)	Hash function: crc32
+[05-01 00-19-48] (src/benchmark.cpp:113)	Hash function: crc32
 
-[04-28 23-19-12] (src/benchmark.cpp:114)	Table size: 3001 buckets
+[05-01 00-19-48] (src/benchmark.cpp:114)	Table size: 3001 buckets
 
-[04-28 23-19-12] (src/benchmark.cpp:115)	Words count: 313557
+[05-01 00-19-48] (src/benchmark.cpp:115)	Words count: 313557
 
-[04-28 23-19-12] (src/benchmark.cpp:116)	Total finds: 627114000
-[04-28 23-19-12] (src/benchmark.cpp:118)	CPU cycles:
-[04-28 23-19-12] (src/benchmark.cpp:119)	   CPU cycles total: 97244295786
-[04-28 23-19-12] (src/benchmark.cpp:120)	   Average cycles per find: 155.07
+[05-01 00-19-48] (src/benchmark.cpp:116)	Total finds: 627114000
+[05-01 00-19-48] (src/benchmark.cpp:118)	CPU cycles:
+[05-01 00-19-48] (src/benchmark.cpp:119)	   CPU cycles total: 99619007875
+[05-01 00-19-48] (src/benchmark.cpp:120)	   Average cycles per find: 158.85
 
-[04-28 23-19-12] (src/benchmark.cpp:122)	Time statictics:
-[04-28 23-19-12] (src/benchmark.cpp:123)	   Total time: 26379.139 ms
-[04-28 23-19-12] (src/benchmark.cpp:124)	   Average time per find: 0.042 μs
+[05-01 00-19-48] (src/benchmark.cpp:122)	Time statictics:
+[05-01 00-19-48] (src/benchmark.cpp:123)	   Total time: 27038.028 ms
+[05-01 00-19-48] (src/benchmark.cpp:124)	   Average time per find: 0.043 μs
 
-[04-28 23-19-12] (src/benchmark.cpp:126)	Search results:
-[04-28 23-19-12] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+[05-01 00-19-48] (src/benchmark.cpp:126)	Search results:
+[05-01 00-19-48] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
 
-[04-28 23-19-12] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
-
-[04-28 23-19-12] (src/main.cpp:37)	tests ended
+[05-01 00-19-48] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
 
 
 
-[04-28 23-21-53] (src/main.cpp:29)	LOG INITED
-[04-28 23-21-53] (src/main.cpp:32)	__Benchmark mode__
 
-[04-28 23-21-53] (src/benchmark.cpp:36)	
+[05-01 00-19-56] (src/benchmark.cpp:36)	
 ========== HASH TABLE FIND BENCHMARK ==========
 
-[04-28 23-21-53] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-19-56] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
 
-[04-28 23-21-53] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-19-56] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
 
-[04-28 23-21-53] (src/benchmark.cpp:39)	Table capacity: 3001
+[05-01 00-19-56] (src/benchmark.cpp:39)	Table capacity: 3001
 
-[04-28 23-21-53] (src/benchmark.cpp:40)	Repetitions per word: 2000
+[05-01 00-19-56] (src/benchmark.cpp:40)	Repetitions per word: 2000
 
-[04-28 23-21-53] (src/benchmark.cpp:48)	ht inited
-[04-28 23-21-53] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
-[04-28 23-21-53] (src/load_ht.cpp:18)	start build hashtable from file
+[05-01 00-19-56] (src/benchmark.cpp:48)	ht inited
+[05-01 00-19-56] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-19-56] (src/load_ht.cpp:18)	start build hashtable from file
 
-[04-28 23-21-53] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
+[05-01 00-19-56] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
 
-[04-28 23-21-53] (src/load_ht.cpp:54)	Unique words: 16927
-[04-28 23-21-53] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
-[04-28 23-21-53] (src/benchmark.cpp:66)	string array inited
-[04-28 23-21-53] (src/benchmark.cpp:74)	words collected
+[05-01 00-19-56] (src/load_ht.cpp:54)	Unique words: 16927
+[05-01 00-19-56] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-19-56] (src/benchmark.cpp:66)	string array inited
+[05-01 00-19-56] (src/benchmark.cpp:74)	words collected
 
 STRING_ARRAY (first 20):
 [1] chapter (len=7)
@@ -123,63 +116,59 @@ STRING_ARRAY (first 20):
 [18] horrors (len=7)
 [19] perpetrated (len=11)
 [20] that (len=4)
-[04-28 23-21-53] (src/benchmark.cpp:82)	start meauring
-[04-28 23-21-53] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
+[05-01 00-19-56] (src/benchmark.cpp:82)	start meauring
+[05-01 00-19-56] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
 
-[04-28 23-22-17] (src/benchmark.cpp:171)	Find benchmark completed
+[05-01 00-20-23] (src/benchmark.cpp:171)	Find benchmark completed
 
-[04-28 23-22-17] (src/benchmark.cpp:90)	end measuring
-[04-28 23-22-17] (src/benchmark.cpp:112)	
+[05-01 00-20-23] (src/benchmark.cpp:90)	end measuring
+[05-01 00-20-23] (src/benchmark.cpp:112)	
 
 =================== BENCHMARK RESULTS ===================
-[04-28 23-22-17] (src/benchmark.cpp:113)	Hash function: crc32
+[05-01 00-20-23] (src/benchmark.cpp:113)	Hash function: crc32
 
-[04-28 23-22-17] (src/benchmark.cpp:114)	Table size: 3001 buckets
+[05-01 00-20-23] (src/benchmark.cpp:114)	Table size: 3001 buckets
 
-[04-28 23-22-17] (src/benchmark.cpp:115)	Words count: 313557
+[05-01 00-20-23] (src/benchmark.cpp:115)	Words count: 313557
 
-[04-28 23-22-17] (src/benchmark.cpp:116)	Total finds: 627114000
-[04-28 23-22-17] (src/benchmark.cpp:118)	CPU cycles:
-[04-28 23-22-17] (src/benchmark.cpp:119)	   CPU cycles total: 90395976715
-[04-28 23-22-17] (src/benchmark.cpp:120)	   Average cycles per find: 144.15
+[05-01 00-20-23] (src/benchmark.cpp:116)	Total finds: 627114000
+[05-01 00-20-23] (src/benchmark.cpp:118)	CPU cycles:
+[05-01 00-20-23] (src/benchmark.cpp:119)	   CPU cycles total: 102975808124
+[05-01 00-20-23] (src/benchmark.cpp:120)	   Average cycles per find: 164.21
 
-[04-28 23-22-17] (src/benchmark.cpp:122)	Time statictics:
-[04-28 23-22-17] (src/benchmark.cpp:123)	   Total time: 24477.477 ms
-[04-28 23-22-17] (src/benchmark.cpp:124)	   Average time per find: 0.039 μs
+[05-01 00-20-23] (src/benchmark.cpp:122)	Time statictics:
+[05-01 00-20-23] (src/benchmark.cpp:123)	   Total time: 27924.070 ms
+[05-01 00-20-23] (src/benchmark.cpp:124)	   Average time per find: 0.045 μs
 
-[04-28 23-22-17] (src/benchmark.cpp:126)	Search results:
-[04-28 23-22-17] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+[05-01 00-20-23] (src/benchmark.cpp:126)	Search results:
+[05-01 00-20-23] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
 
-[04-28 23-22-17] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
-
-[04-28 23-22-17] (src/main.cpp:37)	tests ended
+[05-01 00-20-23] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
 
 
 
-[04-28 23-22-40] (src/main.cpp:29)	LOG INITED
-[04-28 23-22-40] (src/main.cpp:32)	__Benchmark mode__
 
-[04-28 23-22-40] (src/benchmark.cpp:36)	
+[05-01 00-20-38] (src/benchmark.cpp:36)	
 ========== HASH TABLE FIND BENCHMARK ==========
 
-[04-28 23-22-40] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-20-38] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
 
-[04-28 23-22-40] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-20-38] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
 
-[04-28 23-22-40] (src/benchmark.cpp:39)	Table capacity: 3001
+[05-01 00-20-38] (src/benchmark.cpp:39)	Table capacity: 3001
 
-[04-28 23-22-40] (src/benchmark.cpp:40)	Repetitions per word: 2000
+[05-01 00-20-38] (src/benchmark.cpp:40)	Repetitions per word: 2000
 
-[04-28 23-22-40] (src/benchmark.cpp:48)	ht inited
-[04-28 23-22-40] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
-[04-28 23-22-40] (src/load_ht.cpp:18)	start build hashtable from file
+[05-01 00-20-38] (src/benchmark.cpp:48)	ht inited
+[05-01 00-20-38] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-20-38] (src/load_ht.cpp:18)	start build hashtable from file
 
-[04-28 23-22-40] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
+[05-01 00-20-38] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
 
-[04-28 23-22-40] (src/load_ht.cpp:54)	Unique words: 16927
-[04-28 23-22-40] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
-[04-28 23-22-40] (src/benchmark.cpp:66)	string array inited
-[04-28 23-22-40] (src/benchmark.cpp:74)	words collected
+[05-01 00-20-38] (src/load_ht.cpp:54)	Unique words: 16927
+[05-01 00-20-38] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-20-38] (src/benchmark.cpp:66)	string array inited
+[05-01 00-20-38] (src/benchmark.cpp:74)	words collected
 
 STRING_ARRAY (first 20):
 [1] chapter (len=7)
@@ -202,36 +191,110 @@ STRING_ARRAY (first 20):
 [18] horrors (len=7)
 [19] perpetrated (len=11)
 [20] that (len=4)
-[04-28 23-22-40] (src/benchmark.cpp:82)	start meauring
-[04-28 23-22-40] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
+[05-01 00-20-38] (src/benchmark.cpp:82)	start meauring
+[05-01 00-20-38] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
 
-[04-28 23-23-04] (src/benchmark.cpp:171)	Find benchmark completed
+[05-01 00-21-06] (src/benchmark.cpp:171)	Find benchmark completed
 
-[04-28 23-23-04] (src/benchmark.cpp:90)	end measuring
-[04-28 23-23-04] (src/benchmark.cpp:112)	
+[05-01 00-21-06] (src/benchmark.cpp:90)	end measuring
+[05-01 00-21-06] (src/benchmark.cpp:112)	
 
 =================== BENCHMARK RESULTS ===================
-[04-28 23-23-04] (src/benchmark.cpp:113)	Hash function: crc32
+[05-01 00-21-06] (src/benchmark.cpp:113)	Hash function: crc32
 
-[04-28 23-23-04] (src/benchmark.cpp:114)	Table size: 3001 buckets
+[05-01 00-21-06] (src/benchmark.cpp:114)	Table size: 3001 buckets
 
-[04-28 23-23-04] (src/benchmark.cpp:115)	Words count: 313557
+[05-01 00-21-06] (src/benchmark.cpp:115)	Words count: 313557
 
-[04-28 23-23-04] (src/benchmark.cpp:116)	Total finds: 627114000
-[04-28 23-23-04] (src/benchmark.cpp:118)	CPU cycles:
-[04-28 23-23-04] (src/benchmark.cpp:119)	   CPU cycles total: 90959088958
-[04-28 23-23-04] (src/benchmark.cpp:120)	   Average cycles per find: 145.04
+[05-01 00-21-06] (src/benchmark.cpp:116)	Total finds: 627114000
+[05-01 00-21-06] (src/benchmark.cpp:118)	CPU cycles:
+[05-01 00-21-06] (src/benchmark.cpp:119)	   CPU cycles total: 103892232225
+[05-01 00-21-06] (src/benchmark.cpp:120)	   Average cycles per find: 165.67
 
-[04-28 23-23-04] (src/benchmark.cpp:122)	Time statictics:
-[04-28 23-23-04] (src/benchmark.cpp:123)	   Total time: 24597.652 ms
-[04-28 23-23-04] (src/benchmark.cpp:124)	   Average time per find: 0.039 μs
+[05-01 00-21-06] (src/benchmark.cpp:122)	Time statictics:
+[05-01 00-21-06] (src/benchmark.cpp:123)	   Total time: 28161.341 ms
+[05-01 00-21-06] (src/benchmark.cpp:124)	   Average time per find: 0.045 μs
 
-[04-28 23-23-04] (src/benchmark.cpp:126)	Search results:
-[04-28 23-23-04] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+[05-01 00-21-06] (src/benchmark.cpp:126)	Search results:
+[05-01 00-21-06] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
 
-[04-28 23-23-04] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
+[05-01 00-21-06] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
 
-[04-28 23-23-04] (src/main.cpp:37)	tests ended
+
+
+
+[05-01 00-21-34] (src/benchmark.cpp:36)	
+========== HASH TABLE FIND BENCHMARK ==========
+
+[05-01 00-21-34] (src/benchmark.cpp:37)	Text file for searching words: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+
+[05-01 00-21-34] (src/benchmark.cpp:38)	Data file: /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+
+[05-01 00-21-34] (src/benchmark.cpp:39)	Table capacity: 3001
+
+[05-01 00-21-34] (src/benchmark.cpp:40)	Repetitions per word: 2000
+
+[05-01 00-21-34] (src/benchmark.cpp:48)	ht inited
+[05-01 00-21-34] (src/benchmark.cpp:50)	start to build ht from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin
+[05-01 00-21-34] (src/load_ht.cpp:18)	start build hashtable from file
+
+[05-01 00-21-34] (src/load_ht.cpp:53)	Build complete: 313557 words inserted
+
+[05-01 00-21-34] (src/load_ht.cpp:54)	Unique words: 16927
+[05-01 00-21-34] (src/benchmark.cpp:59)	start to collect words from /home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt
+[05-01 00-21-34] (src/benchmark.cpp:66)	string array inited
+[05-01 00-21-34] (src/benchmark.cpp:74)	words collected
+
+STRING_ARRAY (first 20):
+[1] chapter (len=7)
+[2] well (len=4)
+[3] prince (len=6)
+[4] genoa (len=5)
+[5] lucca (len=5)
+[6] just (len=4)
+[7] family (len=6)
+[8] estates (len=7)
+[9] buonapartes (len=11)
+[10] warn (len=4)
+[11] tell (len=4)
+[12] that (len=4)
+[13] this (len=4)
+[14] means (len=5)
+[15] still (len=5)
+[16] defend (len=6)
+[17] infamies (len=8)
+[18] horrors (len=7)
+[19] perpetrated (len=11)
+[20] that (len=4)
+[05-01 00-21-34] (src/benchmark.cpp:82)	start meauring
+[05-01 00-21-34] (src/benchmark.cpp:147)	Starting find benchmark: 313557 words, 2000 repetitions
+
+[05-01 00-22-03] (src/benchmark.cpp:171)	Find benchmark completed
+
+[05-01 00-22-03] (src/benchmark.cpp:90)	end measuring
+[05-01 00-22-03] (src/benchmark.cpp:112)	
+
+=================== BENCHMARK RESULTS ===================
+[05-01 00-22-03] (src/benchmark.cpp:113)	Hash function: crc32
+
+[05-01 00-22-03] (src/benchmark.cpp:114)	Table size: 3001 buckets
+
+[05-01 00-22-03] (src/benchmark.cpp:115)	Words count: 313557
+
+[05-01 00-22-03] (src/benchmark.cpp:116)	Total finds: 627114000
+[05-01 00-22-03] (src/benchmark.cpp:118)	CPU cycles:
+[05-01 00-22-03] (src/benchmark.cpp:119)	   CPU cycles total: 106034498176
+[05-01 00-22-03] (src/benchmark.cpp:120)	   Average cycles per find: 169.08
+
+[05-01 00-22-03] (src/benchmark.cpp:122)	Time statictics:
+[05-01 00-22-03] (src/benchmark.cpp:123)	   Total time: 28757.747 ms
+[05-01 00-22-03] (src/benchmark.cpp:124)	   Average time per find: 0.046 μs
+
+[05-01 00-22-03] (src/benchmark.cpp:126)	Search results:
+[05-01 00-22-03] (src/benchmark.cpp:127)	   Found:  627114000 (0.01%)
+
+[05-01 00-22-03] (src/benchmark.cpp:129)	  Not found: 0 (0.00%)
+
 
 
 

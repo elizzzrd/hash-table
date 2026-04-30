@@ -6,7 +6,9 @@
 #include <ctype.h>
 #include <stdint.h>
 #include <sys/stat.h>
+#include "hash_functions.h"
 #include "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/headers/text.h"
+
 
 //============================================================================
 bool export_words(const StringArray_t * arr, const char * filename)

@@ -1,4 +1,5 @@
 CXX := g++
+NASM := nasm
 
 CXXFLAGS := -g -DNDEBUG -ggdb3 -std=c++17 -O3 -Wall -Wextra -Weffc++ \
  -Waggressive-loop-optimizations -Wc++14-compat -Wmissing-declarations \
@@ -18,7 +19,8 @@ CXXFLAGS := -g -DNDEBUG -ggdb3 -std=c++17 -O3 -Wall -Wextra -Weffc++ \
  -Wstack-usage=8192 -pie -fPIE -Werror=vla
 
 
-SIMD_FLAGS := -mavx2 -mfma
+SIMD_FLAGS := -mavx2 -mfma -msse4.2
+NASM_FLAGS := -f elf64 
 
 #SANITIZERS := -fsanitize=address,alignment,bool,bounds,enum,float-cast-overflow,float-divide-by-zero,integer-divide-by-zero,leak,nonnull-attribute,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vptr
 
@@ -26,8 +28,11 @@ CXXFLAGS += $(SIMD_FLAGS)
 CXXFLAGS += -march=native -fno-omit-frame-pointer
 
 INCLUDES := -I headers
+
 SRC_DIR := src
 BUILD_DIR := build
+ASM_DIR := $(SRC_DIR)/asm
+
 BIN_DIR := $(BUILD_DIR)/bin
 OBJ_DIR := $(BUILD_DIR)/obj
 
@@ -40,9 +45,11 @@ OTHER_SOURCES := $(SRC_DIR)/analyse.cpp \
                  $(SRC_DIR)/load_ht.cpp \
                  $(SRC_DIR)/text.cpp
 
+ASM_SOURCES := $(ASM_DIR)/str.asm
+ASM_OBJS := $(ASM_SOURCES:$(ASM_DIR)/%.asm=$(OBJ_DIR)/%.o)
 
 OTHER_OBJS := $(OTHER_SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-
+OTHER_OBJS += $(ASM_OBJS)
 
 MAIN_SOURCE := $(SRC_DIR)/main.cpp
 MAIN_OBJ := $(OBJ_DIR)/main.o
@@ -75,6 +82,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@echo " Compiling $<..."
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+
+$(OBJ_DIR)/%.o: $(ASM_DIR)/%.asm | $(OBJ_DIR)
+	@mkdir -p $(dir $@)
+	@echo " NASM $<..."
+	@$(NASM) $(NASM_FLAGS) $< -o $@
 
 
 $(OBJ_DIR)/main_comparison.o: $(MAIN_SOURCE) | $(OBJ_DIR)

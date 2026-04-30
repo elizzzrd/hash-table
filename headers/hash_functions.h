@@ -29,5 +29,21 @@ uint64_t hash_rotate(const Elem_t * word);
 uint64_t hash_crc32(const Elem_t * word);
 
 uint64_t hash_crc32c_intrinsic(const Elem_t * word);
+uint64_t hashcrc32_ASM_basic(const Elem_t* elem);
+uint64_t hashcrc32_ASM(const Elem_t* elem);
+
+bool word_equal(const Elem_t * a, const Elem_t * b);
+bool word_equal_ASM(const Elem_t * a, const Elem_t * b);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int str_len_16(const char * str);
+bool str_equal_16(const char * a, const char * b);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

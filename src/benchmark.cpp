@@ -31,7 +31,7 @@ static double get_time_ms(void)
 }
 
 
-Benchmark_Status_t test_ht(const char * path, const char * data)
+Benchmark_Status_t test_ht(const char * path, const char * data, hash_func_t ht_func)
 { 
     LOG_MESSAGE("\n========== HASH TABLE FIND BENCHMARK ==========\n");
     LOG_MESSAGE("Text file for searching words: %s\n", path);
@@ -40,7 +40,7 @@ Benchmark_Status_t test_ht(const char * path, const char * data)
     LOG_MESSAGE("Repetitions per word: %d\n", MAX_BENCHMARK_COMP_NUM);
 
     Hashtable_t ht = {};
-    if (!hashtable_init(&ht, DEFAULT_BENCHMARK_TABLE_SIZE, hash_crc32c_intrinsic))
+    if (!hashtable_init(&ht, DEFAULT_BENCHMARK_TABLE_SIZE, ht_func))
     {
         fprintf(stderr, "failed to init hash table for %s\n", "hash_crc32");
         return BENCHMARK_STATUS_FILE_ERROR;
@@ -125,9 +125,9 @@ void print_benchmark_results(BenchmarkResult_t * result)
     
     log_message(__FILE__, __LINE__, "Search results:");
     log_message(__FILE__, __LINE__, "   Found:  %zu (%.2f%%)\n", result->found_count,
-           (double)(result->found_count) / (double)(result->total_finds * 100.0));
+           (double)(result->found_count) / (result->total_finds * 100.0));
     log_message(__FILE__, __LINE__, "  Not found: %zu (%.2f%%)\n", result->not_found_count,
-           (double)(result->not_found_count) / (double)(result->total_finds * 100.0));
+           (double)(result->not_found_count) / (result->total_finds * 100.0));
 }
 
 

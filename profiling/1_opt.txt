@@ -1,4 +1,4 @@
-what new:
+whats new:
     crc32_intricisc
     word_equal - strcmp
     Word_t - strlen больше не нужен

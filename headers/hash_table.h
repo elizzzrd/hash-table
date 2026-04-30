@@ -4,7 +4,6 @@
 
 #ifdef BENCHMARK
     #define LOG_MESSAGE(format, ...)  
-    #define NDEBUG
 #else
     #define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
 #endif
@@ -22,7 +21,6 @@
 #define LIST_SIZE_MAX 25
 
 
-#define LOG_MESSAGE(format, ...) log_message(__FILE__, __LINE__, format, ##__VA_ARGS__)
 bool log_initt(void);
 void log_close(void);
 void log_message(const char * file, int line,const char * format, ...);
@@ -78,7 +76,7 @@ typedef struct
 
 bool hashtable_init(Hashtable_t * ht, size_t capacity, hash_func_t hash);
 HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t * word);
-void build_hashtable(Hashtable_t * ht, StringArray_t * arr);
+
 int hashtable_get_item_count(Hashtable_t * ht, Elem_t * key_word);
 bool hashtable_delete_item(Hashtable_t * ht, const Elem_t * key_word);
 void hashtable_destroy(Hashtable_t * ht);

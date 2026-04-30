@@ -1,11 +1,11 @@
 #include <assert.h>
 #include <string.h>
 #include <stdint.h>
+#include <smmintrin.h>
 
-
+#include "text.h"
 #include "hash_functions.h"
 
-#define MAX_WORD_LEN 256
 
 HashFunctionInfo hash_functions[] = 
 {
@@ -154,3 +154,95 @@ uint64_t hash_crc32c_intrinsic(const Elem_t * word)
 }
 
 
+/*==========================================================================
+CRC_32_ASM
+__asm__ volatile(
+    "инструкция ассемблера"
+    : выходные операнды
+    : входные операнды
+    : разрушаемые регистры 
+);
+==========================================================================*/
+uint64_t hashcrc32_ASM_basic(const Elem_t* elem)
+{
+    
+    uint32_t hash = 0xFFFFFFFF; 
+    uint8_t len = elem->length;
+    const char* str = elem->data;
+
+    for (uint8_t i = 0; i < len; i++)
+    {
+        uint8_t byte = (uint8_t)str[i];
+
+        __asm__ volatile(
+            "crc32b %1, %0"  
+            : "+r"(hash)     // %0: 32-bit register
+            : "rm"(byte)     // %1: 8-bit register or memory
+        );
+    }
+
+    return hash;
+}
+
+
+uint64_t hashcrc32_ASM(const Elem_t* elem)
+{
+    uint64_t hash = 0xFFFFFFFF; 
+    uint32_t len = elem->length;
+    const char* str = elem->data;
+
+    
+    while (len >= 8)
+    {
+        uint64_t chunk = *(const uint64_t*)str;
+        __asm__ volatile(
+            "crc32q %1, %0"
+            : "+r"(hash)
+            : "rm"(chunk)
+        );
+        str += 8;
+        len -= 8;
+    }
+
+    
+    while (len > 0)
+    {
+        uint8_t byte = *(const uint8_t*)str;
+        __asm__ volatile(
+            "crc32b %1, %0"
+            : "+r"(hash)
+            : "rm"(byte)
+        );
+        str++;
+        len--;
+    }
+
+    return hash;
+}
+
+
+
+//======================================================================================
+bool word_equal(const Elem_t * a, const Elem_t * b)
+{
+    if (a->length != b->length)     return false;
+    if (a->length == 0)             return false;
+
+    __m128i va = _mm_loadu_si128((const __m128i *)a->data);
+    __m128i vb = _mm_loadu_si128((const __m128i *)b->data);
+
+    __m128i cmp = _mm_cmpeq_epi8(va, vb);
+
+    return _mm_movemask_epi8(cmp) == 0xFFFF;
+}
+
+
+
+bool word_equal_ASM(const Elem_t * a, const Elem_t * b)
+{
+    if (a->length != b->length)     return false;
+    if (a->length == 0)             return false;
+
+    return str_equal_16(a->data, b->data) == 1;
+}
+//======================================================================================

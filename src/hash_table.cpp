@@ -6,23 +6,8 @@
 
 
 #include "hash_table.h"
+#include "hash_functions.h"
 #include "benchmark.h"
-
-
-//======================================================================================
-static inline bool word_equal(const Elem_t * a, const Elem_t * b)
-{
-    if (a->length != b->length)     return false;
-    if (a->length == 0)             return false;
-
-    __m128i va = _mm_loadu_si128((const __m128i *)a->data);
-    __m128i vb = _mm_loadu_si128((const __m128i *)b->data);
-
-    __m128i cmp = _mm_cmpeq_epi8(va, vb);
-
-    return _mm_movemask_epi8(cmp) == 0xFFFF;
-}
-//======================================================================================
 
 
 
@@ -84,7 +69,7 @@ HT_Err hashtable_insert(Hashtable_t * ht, const Elem_t * word)
     // searching for word in bucket
     while (current != NULL)
     {
-        if (word_equal(&current->word, word))
+        if (word_equal_ASM(&current->word, word))
         {
             current->size++;
             return HT_OK;
@@ -127,7 +112,7 @@ int hashtable_get_item_count(Hashtable_t * ht, Elem_t * key_word)
     
     while (current != NULL)
     {
-        if (word_equal(&current->word, key_word))
+        if (word_equal_ASM(&current->word, key_word))
         {
             return current->size;
         }
@@ -148,7 +133,7 @@ bool hashtable_delete_item(Hashtable_t * ht, const Elem_t * key_word)
     
     while (current != NULL)
     {
-        if (word_equal(&current->word, key_word))
+        if (word_equal_ASM(&current->word, key_word))
         {
             if (current->prev != NULL)
             {
@@ -191,7 +176,7 @@ bool hashtable_find_item(Hashtable_t * ht, const Elem_t * key_word)
 
     while (current != NULL)
     {
-        if (word_equal(&current->word, key_word))
+        if (word_equal_ASM(&current->word, key_word))
             return true;
         current = current->next;
     }

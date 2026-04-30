@@ -1,11 +1,8 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
 
-#include <chrono>
 #include "hash_table.h"
 #include "analyse.h"
 #include "hash_functions.h"
@@ -17,7 +14,6 @@ extern FILE * log_fp;
 #define HT_307 307
 #define HT_3001 3001
 #define HT_30011 30011
-
 
 
 int main(void)
@@ -33,7 +29,7 @@ int main(void)
     Hashtable_t ht = {};
     const char * path = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/source-text/war-and-peace.txt";
     const char * data = "/home/gardina_elizaveta/projects/2sem/hash_table/hash-table/src/text/data.bin";
-    test_ht(path, data);
+    test_ht(path, data, hashcrc32_ASM);
     LOG_MESSAGE("tests ended");
     #endif
 
